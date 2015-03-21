@@ -8,11 +8,6 @@
 
 #import "AppDelegate.h"
 #import "RoadyCore.h"
-#import "BZFoursquare.h"
-
-static NSString * const DTFoursquareClientId = @"0SSGVTREEPC55ZIHTPJSIP4YEHW52SR200TJJVVGGDCXTABB";
-static NSString * const DTFoursquareClientSecret = @"X2GQKLMNHGGJ3Y54P0EDUGK1TKBMF04SM0UWCXR1WP2PBHOK";
-
 
 @interface AppDelegate ()
 
@@ -23,7 +18,7 @@ static NSString * const DTFoursquareClientSecret = @"X2GQKLMNHGGJ3Y54P0EDUGK1TKB
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    ((RoadyCore *)[RoadyCore init]).foursquare = [[[BZFoursquare alloc] initWithClientID:DTFoursquareClientId callbackURL:@"roady://foursquare"]];
+
     return YES;
 }
 
