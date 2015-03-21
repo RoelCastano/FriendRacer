@@ -14,6 +14,11 @@
 		23B71B441ABE0D5100CAE57B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B71B431ABE0D5100CAE57B /* Images.xcassets */; };
 		23B71B471ABE0D5100CAE57B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B71B451ABE0D5100CAE57B /* LaunchScreen.xib */; };
 		23B71B531ABE0D5100CAE57B /* RoadyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B521ABE0D5100CAE57B /* RoadyTests.m */; };
+		23B71B661ABE145100CAE57B /* RoadyCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B651ABE145100CAE57B /* RoadyCore.m */; };
+		23B71B6C1ABE1B3F00CAE57B /* BZFoursquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B691ABE1B3F00CAE57B /* BZFoursquare.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		23B71B6D1ABE1B3F00CAE57B /* BZFoursquareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B6B1ABE1B3F00CAE57B /* BZFoursquareRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		23E1C57D1ABE1DF00084EEE7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E1C57C1ABE1DF00084EEE7 /* MobileCoreServices.framework */; };
+		3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 239237A7A195373C025E7B8D /* libPods-Roady.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		239237A7A195373C025E7B8D /* libPods-Roady.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Roady.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B71B331ABE0D5100CAE57B /* Roady.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roady.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B71B371ABE0D5100CAE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23B71B381ABE0D5100CAE57B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +46,15 @@
 		23B71B4C1ABE0D5100CAE57B /* RoadyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B71B511ABE0D5100CAE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23B71B521ABE0D5100CAE57B /* RoadyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoadyTests.m; sourceTree = "<group>"; };
+		23B71B641ABE145100CAE57B /* RoadyCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadyCore.h; sourceTree = "<group>"; };
+		23B71B651ABE145100CAE57B /* RoadyCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadyCore.m; sourceTree = "<group>"; };
+		23B71B681ABE1B3F00CAE57B /* BZFoursquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFoursquare.h; sourceTree = "<group>"; };
+		23B71B691ABE1B3F00CAE57B /* BZFoursquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFoursquare.m; sourceTree = "<group>"; };
+		23B71B6A1ABE1B3F00CAE57B /* BZFoursquareRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFoursquareRequest.h; sourceTree = "<group>"; };
+		23B71B6B1ABE1B3F00CAE57B /* BZFoursquareRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFoursquareRequest.m; sourceTree = "<group>"; };
+		23E1C57C1ABE1DF00084EEE7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.release.xcconfig"; sourceTree = "<group>"; };
+		C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23E1C57D1ABE1DF00084EEE7 /* MobileCoreServices.framework in Frameworks */,
+				3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +83,8 @@
 				23B71B351ABE0D5100CAE57B /* Roady */,
 				23B71B4F1ABE0D5100CAE57B /* RoadyTests */,
 				23B71B341ABE0D5100CAE57B /* Products */,
+				DDC7F15F6BB668A762997B34 /* Pods */,
+				C12B41C51BB747E31DEB7D43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +100,8 @@
 		23B71B351ABE0D5100CAE57B /* Roady */ = {
 			isa = PBXGroup;
 			children = (
+				23B71B671ABE1B3300CAE57B /* Vendor */,
+				23B71B631ABE142600CAE57B /* Roady Core */,
 				23B71B3A1ABE0D5100CAE57B /* AppDelegate.h */,
 				23B71B3B1ABE0D5100CAE57B /* AppDelegate.m */,
 				23B71B3D1ABE0D5100CAE57B /* ViewController.h */,
@@ -119,6 +140,44 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		23B71B631ABE142600CAE57B /* Roady Core */ = {
+			isa = PBXGroup;
+			children = (
+				23B71B641ABE145100CAE57B /* RoadyCore.h */,
+				23B71B651ABE145100CAE57B /* RoadyCore.m */,
+			);
+			name = "Roady Core";
+			sourceTree = "<group>";
+		};
+		23B71B671ABE1B3300CAE57B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				23B71B681ABE1B3F00CAE57B /* BZFoursquare.h */,
+				23B71B691ABE1B3F00CAE57B /* BZFoursquare.m */,
+				23B71B6A1ABE1B3F00CAE57B /* BZFoursquareRequest.h */,
+				23B71B6B1ABE1B3F00CAE57B /* BZFoursquareRequest.m */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		C12B41C51BB747E31DEB7D43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23E1C57C1ABE1DF00084EEE7 /* MobileCoreServices.framework */,
+				239237A7A195373C025E7B8D /* libPods-Roady.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDC7F15F6BB668A762997B34 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */,
+				6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23B71B561ABE0D5100CAE57B /* Build configuration list for PBXNativeTarget "Roady" */;
 			buildPhases = (
+				7A7439349594859522310155 /* Check Pods Manifest.lock */,
 				23B71B2F1ABE0D5100CAE57B /* Sources */,
 				23B71B301ABE0D5100CAE57B /* Frameworks */,
 				23B71B311ABE0D5100CAE57B /* Resources */,
+				E1B25110B09CAEF3CF04A751 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,13 +275,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7A7439349594859522310155 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E1B25110B09CAEF3CF04A751 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Roady/Pods-Roady-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		23B71B2F1ABE0D5100CAE57B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B71B6D1ABE1B3F00CAE57B /* BZFoursquareRequest.m in Sources */,
 				23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */,
 				23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */,
+				23B71B661ABE145100CAE57B /* RoadyCore.m in Sources */,
+				23B71B6C1ABE1B3F00CAE57B /* BZFoursquare.m in Sources */,
 				23B71B391ABE0D5100CAE57B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +438,7 @@
 		};
 		23B71B571ABE0D5100CAE57B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Roady/Info.plist;
@@ -351,6 +449,7 @@
 		};
 		23B71B581ABE0D5100CAE57B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Roady/Info.plist;
@@ -412,6 +511,7 @@
 				23B71B581ABE0D5100CAE57B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		23B71B591ABE0D5100CAE57B /* Build configuration list for PBXNativeTarget "RoadyTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +520,7 @@
 				23B71B5B1ABE0D5100CAE57B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
