@@ -19,6 +19,7 @@ static RoadyCore *sharedInstance;
     self = [super init];
     if (self) {
         sharedInstance = self;
+        [PBFoursquareAPI setup];
     }
     return self;
 }

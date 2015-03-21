@@ -15,14 +15,15 @@
 		23B71B471ABE0D5100CAE57B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B71B451ABE0D5100CAE57B /* LaunchScreen.xib */; };
 		23B71B531ABE0D5100CAE57B /* RoadyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B521ABE0D5100CAE57B /* RoadyTests.m */; };
 		23B71B661ABE145100CAE57B /* RoadyCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B651ABE145100CAE57B /* RoadyCore.m */; };
-		23B71B6C1ABE1B3F00CAE57B /* BZFoursquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B691ABE1B3F00CAE57B /* BZFoursquare.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		23B71B6D1ABE1B3F00CAE57B /* BZFoursquareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B6B1ABE1B3F00CAE57B /* BZFoursquareRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23E1C57D1ABE1DF00084EEE7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E1C57C1ABE1DF00084EEE7 /* MobileCoreServices.framework */; };
+		23E1C5801ABE24550084EEE7 /* PBFoursquareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C57F1ABE24550084EEE7 /* PBFoursquareAPI.m */; };
+		23E1C5831ABE25A00084EEE7 /* PBFoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5821ABE25A00084EEE7 /* PBFoursquareVenue.m */; };
+		23E1C5851ABE2A100084EEE7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E1C5841ABE2A100084EEE7 /* CoreLocation.framework */; };
+		23E1C5891ABE334C0084EEE7 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5881ABE334C0084EEE7 /* SplashViewController.m */; };
+		23E1C58C1ABE33660084EEE7 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C58B1ABE33660084EEE7 /* Session.m */; };
+		23E1C5901ABE33840084EEE7 /* MHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C58F1ABE33840084EEE7 /* MHUser.m */; };
+		23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5921ABE338B0084EEE7 /* HMApiClient.m */; };
 		3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 239237A7A195373C025E7B8D /* libPods-Roady.a */; };
-		7DC21DE91ABE26D700DF3F8C /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC21DE81ABE26D700DF3F8C /* SplashViewController.m */; };
-		7DC21DEF1ABE2C9700DF3F8C /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC21DEE1ABE2C9700DF3F8C /* Session.m */; };
-		7DC21DF31ABE2D0000DF3F8C /* MHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC21DF21ABE2D0000DF3F8C /* MHUser.m */; };
-		7DC21DF61ABE2DC900DF3F8C /* HMApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC21DF51ABE2DC900DF3F8C /* HMApiClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,20 +53,21 @@
 		23B71B521ABE0D5100CAE57B /* RoadyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoadyTests.m; sourceTree = "<group>"; };
 		23B71B641ABE145100CAE57B /* RoadyCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadyCore.h; sourceTree = "<group>"; };
 		23B71B651ABE145100CAE57B /* RoadyCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadyCore.m; sourceTree = "<group>"; };
-		23B71B681ABE1B3F00CAE57B /* BZFoursquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFoursquare.h; sourceTree = "<group>"; };
-		23B71B691ABE1B3F00CAE57B /* BZFoursquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFoursquare.m; sourceTree = "<group>"; };
-		23B71B6A1ABE1B3F00CAE57B /* BZFoursquareRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFoursquareRequest.h; sourceTree = "<group>"; };
-		23B71B6B1ABE1B3F00CAE57B /* BZFoursquareRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFoursquareRequest.m; sourceTree = "<group>"; };
 		23E1C57C1ABE1DF00084EEE7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		23E1C57E1ABE24550084EEE7 /* PBFoursquareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBFoursquareAPI.h; sourceTree = "<group>"; };
+		23E1C57F1ABE24550084EEE7 /* PBFoursquareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBFoursquareAPI.m; sourceTree = "<group>"; };
+		23E1C5811ABE25A00084EEE7 /* PBFoursquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBFoursquareVenue.h; sourceTree = "<group>"; };
+		23E1C5821ABE25A00084EEE7 /* PBFoursquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBFoursquareVenue.m; sourceTree = "<group>"; };
+		23E1C5841ABE2A100084EEE7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		23E1C5871ABE334C0084EEE7 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		23E1C5881ABE334C0084EEE7 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		23E1C58A1ABE33660084EEE7 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		23E1C58B1ABE33660084EEE7 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		23E1C58E1ABE33840084EEE7 /* MHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHUser.h; sourceTree = "<group>"; };
+		23E1C58F1ABE33840084EEE7 /* MHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUser.m; sourceTree = "<group>"; };
+		23E1C5911ABE338B0084EEE7 /* HMApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMApiClient.h; sourceTree = "<group>"; };
+		23E1C5921ABE338B0084EEE7 /* HMApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMApiClient.m; sourceTree = "<group>"; };
 		6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.release.xcconfig"; sourceTree = "<group>"; };
-		7DC21DE71ABE26D700DF3F8C /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
-		7DC21DE81ABE26D700DF3F8C /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
-		7DC21DED1ABE2C9700DF3F8C /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
-		7DC21DEE1ABE2C9700DF3F8C /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
-		7DC21DF11ABE2D0000DF3F8C /* MHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHUser.h; sourceTree = "<group>"; };
-		7DC21DF21ABE2D0000DF3F8C /* MHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUser.m; sourceTree = "<group>"; };
-		7DC21DF41ABE2DC900DF3F8C /* HMApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMApiClient.h; sourceTree = "<group>"; };
-		7DC21DF51ABE2DC900DF3F8C /* HMApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMApiClient.m; sourceTree = "<group>"; };
 		C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23E1C5851ABE2A100084EEE7 /* CoreLocation.framework in Frameworks */,
 				23E1C57D1ABE1DF00084EEE7 /* MobileCoreServices.framework in Frameworks */,
 				3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */,
 			);
@@ -112,14 +115,12 @@
 		23B71B351ABE0D5100CAE57B /* Roady */ = {
 			isa = PBXGroup;
 			children = (
-				7DC21DF01ABE2CE900DF3F8C /* Models */,
-				7DC21DE61ABE26AD00DF3F8C /* Controllers */,
+				23E1C58D1ABE337D0084EEE7 /* Models */,
+				23E1C5861ABE33400084EEE7 /* Controllers */,
 				23B71B671ABE1B3300CAE57B /* Vendor */,
 				23B71B631ABE142600CAE57B /* Roady Core */,
 				23B71B3A1ABE0D5100CAE57B /* AppDelegate.h */,
 				23B71B3B1ABE0D5100CAE57B /* AppDelegate.m */,
-				23B71B3D1ABE0D5100CAE57B /* ViewController.h */,
-				23B71B3E1ABE0D5100CAE57B /* ViewController.m */,
 				23B71B401ABE0D5100CAE57B /* Main.storyboard */,
 				23B71B431ABE0D5100CAE57B /* Images.xcassets */,
 				23B71B451ABE0D5100CAE57B /* LaunchScreen.xib */,
@@ -133,8 +134,6 @@
 			children = (
 				23B71B371ABE0D5100CAE57B /* Info.plist */,
 				23B71B381ABE0D5100CAE57B /* main.m */,
-				7DC21DF41ABE2DC900DF3F8C /* HMApiClient.h */,
-				7DC21DF51ABE2DC900DF3F8C /* HMApiClient.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -159,10 +158,12 @@
 		23B71B631ABE142600CAE57B /* Roady Core */ = {
 			isa = PBXGroup;
 			children = (
+				23E1C5911ABE338B0084EEE7 /* HMApiClient.h */,
+				23E1C5921ABE338B0084EEE7 /* HMApiClient.m */,
+				23E1C58A1ABE33660084EEE7 /* Session.h */,
+				23E1C58B1ABE33660084EEE7 /* Session.m */,
 				23B71B641ABE145100CAE57B /* RoadyCore.h */,
 				23B71B651ABE145100CAE57B /* RoadyCore.m */,
-				7DC21DED1ABE2C9700DF3F8C /* Session.h */,
-				7DC21DEE1ABE2C9700DF3F8C /* Session.m */,
 			);
 			name = "Roady Core";
 			sourceTree = "<group>";
@@ -170,28 +171,30 @@
 		23B71B671ABE1B3300CAE57B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				23B71B681ABE1B3F00CAE57B /* BZFoursquare.h */,
-				23B71B691ABE1B3F00CAE57B /* BZFoursquare.m */,
-				23B71B6A1ABE1B3F00CAE57B /* BZFoursquareRequest.h */,
-				23B71B6B1ABE1B3F00CAE57B /* BZFoursquareRequest.m */,
+				23E1C57E1ABE24550084EEE7 /* PBFoursquareAPI.h */,
+				23E1C57F1ABE24550084EEE7 /* PBFoursquareAPI.m */,
+				23E1C5811ABE25A00084EEE7 /* PBFoursquareVenue.h */,
+				23E1C5821ABE25A00084EEE7 /* PBFoursquareVenue.m */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
 		};
-		7DC21DE61ABE26AD00DF3F8C /* Controllers */ = {
+		23E1C5861ABE33400084EEE7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7DC21DE71ABE26D700DF3F8C /* SplashViewController.h */,
-				7DC21DE81ABE26D700DF3F8C /* SplashViewController.m */,
+				23B71B3D1ABE0D5100CAE57B /* ViewController.h */,
+				23B71B3E1ABE0D5100CAE57B /* ViewController.m */,
+				23E1C5871ABE334C0084EEE7 /* SplashViewController.h */,
+				23E1C5881ABE334C0084EEE7 /* SplashViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		7DC21DF01ABE2CE900DF3F8C /* Models */ = {
+		23E1C58D1ABE337D0084EEE7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7DC21DF11ABE2D0000DF3F8C /* MHUser.h */,
-				7DC21DF21ABE2D0000DF3F8C /* MHUser.m */,
+				23E1C58E1ABE33840084EEE7 /* MHUser.h */,
+				23E1C58F1ABE33840084EEE7 /* MHUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 		C12B41C51BB747E31DEB7D43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23E1C5841ABE2A100084EEE7 /* CoreLocation.framework */,
 				23E1C57C1ABE1DF00084EEE7 /* MobileCoreServices.framework */,
 				239237A7A195373C025E7B8D /* libPods-Roady.a */,
 			);
@@ -349,15 +353,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DC21DF61ABE2DC900DF3F8C /* HMApiClient.m in Sources */,
-				7DC21DEF1ABE2C9700DF3F8C /* Session.m in Sources */,
-				23B71B6D1ABE1B3F00CAE57B /* BZFoursquareRequest.m in Sources */,
-				7DC21DE91ABE26D700DF3F8C /* SplashViewController.m in Sources */,
+				23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */,
+				23E1C58C1ABE33660084EEE7 /* Session.m in Sources */,
 				23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */,
+				23E1C5891ABE334C0084EEE7 /* SplashViewController.m in Sources */,
+				23E1C5801ABE24550084EEE7 /* PBFoursquareAPI.m in Sources */,
 				23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */,
 				23B71B661ABE145100CAE57B /* RoadyCore.m in Sources */,
-				23B71B6C1ABE1B3F00CAE57B /* BZFoursquare.m in Sources */,
-				7DC21DF31ABE2D0000DF3F8C /* MHUser.m in Sources */,
+				23E1C5831ABE25A00084EEE7 /* PBFoursquareVenue.m in Sources */,
+				23E1C5901ABE33840084EEE7 /* MHUser.m in Sources */,
 				23B71B391ABE0D5100CAE57B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BZFoursquare.h"
+#import "PBFoursquareAPI.h"
 
 @interface RoadyCore : NSObject
 
 +(instancetype)sharedInstance;
-@property (nonatomic, strong) BZFoursquare *foursquare;
+@property (nonatomic, strong) PBFoursquareAPI *foursquare;
 @end

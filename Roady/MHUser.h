@@ -10,4 +10,9 @@
 
 @interface MHUser : NSObject
 
+@property (strong, nonatomic) NSNumber *userId;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *avatarURL;
+@property (strong, nonatomic) NSString *authToken;
+
 @end
