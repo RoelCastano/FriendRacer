@@ -4,7 +4,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Roady' do
-
+    pod 'Facebook-iOS-SDK', '~> 3.23'
 end
 
 target 'RoadyTests' do
