@@ -10,6 +10,7 @@
 #import "PBFoursquareVenue.h"
 #import <CoreLocation/CoreLocation.h>
 #import "RoadyCore.h"
+#import <RestKit/RestKit.h>
 
 static NSString * const PBFoursquareBaseAPI = @"https://api.foursquare.com/v2";
 static NSString * const PBFoursquareClientId = @"0SSGVTREEPC55ZIHTPJSIP4YEHW52SR200TJJVVGGDCXTABB";
@@ -46,7 +47,7 @@ static NSString * const PBFoursquareVenueFormat = @"venues/explore?client_id=%@&
     [self.manager startUpdatingLocation];
 }
 
-- (void)requestVenues {
+- (void)startGetVenuesRequest {
     [self getCurrentLocation];
 }
 

@@ -17,4 +17,5 @@
 @interface PBFoursquareAPI : NSObject
 @property id<PBFoursquareAPIDelegate> delegate;
 + (void)setup;
+- (void)startGetVenuesRequest;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "Session.h"
+#import "HMApiClient.h"
 
 @implementation Session
 
@@ -27,7 +28,7 @@ Session *activeSession = nil;
     if (self) {
         self.currentUser = currentUser;
         
-        [ILApiClient setAuthorizationToken:currentUser.authToken];
+        [HMApiClient setAuthorizationToken:currentUser.authToken];
     }
     return self;
 }
