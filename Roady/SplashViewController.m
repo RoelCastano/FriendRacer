@@ -8,6 +8,7 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 #import "SplashViewController.h"
+#import "Session.h"
 
 @interface SplashViewController ()
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
@@ -49,6 +50,7 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     NSLog(@"Logged");
+    [Session.activeSession currentUser]
     self.profilePictureView.profileID = user.objectID;
     self.nameLabel.text = user.name;
 }
