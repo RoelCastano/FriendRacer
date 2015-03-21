@@ -4,7 +4,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Roady' do
-    pod "AMSlideMenu", "~> 1.5.4"
+    pod 'Facebook-iOS-SDK', '~> 3.23'
+    pod 'AMSlideMenu', '~> 1.5.4'
+    pod 'RestKit', '~> 0.20.0'
 end
 
 target 'RoadyTests' do
