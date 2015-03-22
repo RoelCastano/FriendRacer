@@ -7,6 +7,7 @@
 //
 
 #import "DTRaceViewController.h"
+#import "HKCustomPointAnnotation.h"
 #import <MapKit/MapKit.h>
 #import <Firebase/Firebase.h>
 
@@ -88,10 +89,10 @@
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
             pinView.canShowCallout = YES;
             pinView.image = [UIImage imageNamed:@"schools_maps"];
-            HKCustomButton* rightButton = [HKCustomButton buttonWithType:UIButtonTypeDetailDisclosure];
-            rightButton.event = ((HKCustomPointAnnotation*)annotation).event;
-            [rightButton addTarget:self action:@selector(eventButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-            pinView.rightCalloutAccessoryView = rightButton;
+            //HKCustomButton* rightButton = [HKCustomButton buttonWithType:UIButtonTypeDetailDisclosure];
+            //rightButton.event = ((HKCustomPointAnnotation*)annotation).event;
+            //[rightButton addTarget:self action:@selector(eventButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            //pinView.rightCalloutAccessoryView = rightButton;
             // Add an image to the left callout.
         } else {
             pinView.annotation = annotation;
