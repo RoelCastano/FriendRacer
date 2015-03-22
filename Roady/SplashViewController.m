@@ -73,6 +73,8 @@
                                                                                                 mapId:jsonObject[@"map_id"]
                                                                                                   lat:jsonObject[@"lat"]
                                                                                                   lng:jsonObject[@"lng"]];
+                         
+                         ((DTRaceViewController *)viewController).users = [NSArray arrayWithArray:jsonObject[@"users"]];
                      }
                      else {
                          viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
