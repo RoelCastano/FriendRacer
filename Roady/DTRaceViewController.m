@@ -220,15 +220,11 @@
     [httpClient postPath:@"api/races/exit_race"
               parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                     [self dismissViewControllerAnimated:YES completion:^{
-                         DTRootViewController *raceViewController;
-                         raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
-                         [self presentViewController:raceViewController
-                                            animated:YES
-                                          completion:^{
-                                              [raceViewController.navigationController popToRootViewControllerAnimated:YES];
-                                          }];
-                     }];
+                     DTRootViewController *raceViewController;
+                     raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+                     [self presentViewController:raceViewController
+                                        animated:YES
+                                      completion:nil];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error on the request." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -251,7 +247,7 @@
     [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", @"10206435959880648"]]];
     
     return cell;
-
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
