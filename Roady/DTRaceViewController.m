@@ -137,7 +137,8 @@
                                            @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
                                            @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude],
                                            @"distance": [NSNumber numberWithDouble:dist],
-                                           @"speed": [NSNumber numberWithDouble:speed]
+                                           @"speed": [NSNumber numberWithDouble:speed],
+                                           @"name": activeSession.currentUser.name
                                            }];
 }
 
