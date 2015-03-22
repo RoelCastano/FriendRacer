@@ -15,15 +15,28 @@
 
 @interface DTInvitationPopupViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *adminNameLabel;
+@property (weak, nonatomic) IBOutlet UIView *participantsView;
 @property (weak, nonatomic) IBOutlet UILabel *placeLabel;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIImageView *inviteeImage;
 @end
 
 @implementation DTInvitationPopupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.participantsView.layer.cornerRadius = self.participantsView.frame.size.height/2;
+    self.participantsView.layer.masksToBounds = YES;
     self.adminNameLabel.text = self.adminName;
     self.placeLabel.text = self.placeName;
+    self.containerView.layer.cornerRadius = 8.0f;
+    self.containerView.layer.masksToBounds = YES;
+    self.inviteeImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.adminUid]]]];
+    self.inviteeImage.layer.cornerRadius = self.inviteeImage.frame.size.height/2;
+    [self.inviteeImage.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [self.inviteeImage setClipsToBounds:YES];
+    [self.inviteeImage.layer setBorderWidth:1.0f];
+    
 }
 
 - (IBAction)didClickedAccpet:(id)sender {

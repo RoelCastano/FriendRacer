@@ -262,8 +262,10 @@
         NSString *dist = arr[0][@"distance"];
         NSLog(@"Distance for %@: %@", user[@"name"], dist);
         double dist2 = [dist doubleValue];
-        if (dist2 > 50.0) {
-            cell.distanceLabel.text = dist;
+        if (dist2 > 999) {
+            cell.distanceLabel.text = [NSString stringWithFormat:@"%f kms", dist2/1000];
+        } else if (dist2 > 50) {
+            cell.distanceLabel.text = [NSString stringWithFormat:@"%f mts", dist2];
         } else {
             cell.distanceLabel.text = @"Arrived";
         }
