@@ -10,4 +10,16 @@
 
 @implementation PBFoursquareVenue
 
+- (instancetype)initWithName:(NSString *)name latitude:(NSDecimalNumber *)lat longitude:(NSDecimalNumber *)lng distance:(NSString *)distance {
+    self = [super init];
+    
+    if (self) {
+        _name = name;
+        _lat = lat;
+        _lng = lng;
+        _distance = distance;
+    }
+    
+    return self;
+}
 @end

@@ -8,7 +8,6 @@
 
 #import "PBFoursquareAPI.h"
 #import "PBFoursquareVenue.h"
-#import <CoreLocation/CoreLocation.h>
 #import "RoadyCore.h"
 #import <RestKit/RestKit.h>
 
@@ -17,22 +16,10 @@ static NSString * const PBFoursquareClientId = @"0SSGVTREEPC55ZIHTPJSIP4YEHW52SR
 static NSString * const PBFoursquareClientSecret = @"X2GQKLMNHGGJ3Y54P0EDUGK1TKBMF04SM0UWCXR1WP2PBHOK";
 static NSString * const PBFoursquareVenueFormat = @"venues/explore?client_id=%@&client_secret=%@&v=20130815&ll=%@";
 
-@interface PBFoursquareAPI() <CLLocationManagerDelegate>
-@property CLLocationManager *manager;
-@property NSString *currentLocation;
+@interface PBFoursquareAPI()
 @end
 
 @implementation PBFoursquareAPI
-
-- (instancetype)init {
-    self = [super init];
-    
-    if(self) {
-        _manager = [[CLLocationManager alloc] init];
-    }
-    
-    return self;
-}
 
 + (void)setup {
     [RoadyCore sharedInstance].foursquare = [[PBFoursquareAPI alloc] init];
@@ -40,47 +27,29 @@ static NSString * const PBFoursquareVenueFormat = @"venues/explore?client_id=%@&
 
 #pragma mark - Get Venues
 
-- (void)getCurrentLocation {
-    self.manager.delegate = self;
-    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
-    
-    [self.manager startUpdatingLocation];
-}
-
-- (void)startGetVenuesRequest {
-    [self getCurrentLocation];
-}
-
-- (void)getVenues {
+- (void)getVenuesWithLocation:(NSString *)location {
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:PBFoursquareBaseAPI]];
-    [httpClient getPath:[NSString stringWithFormat:PBFoursquareVenueFormat, PBFoursquareClientId, PBFoursquareClientSecret, self.currentLocation]
+    [httpClient getPath:[NSString stringWithFormat:PBFoursquareVenueFormat, PBFoursquareClientId, PBFoursquareClientSecret, location]
               parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      NSError *error;
                      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-//                    [self.delegate sessionDidLogin:jsonObject[JSON_AUTH_TOKEN] error:error];
-                     NSLog(@"JSON: %@", (NSString *)jsonObject.description);
+                     NSMutableArray *result = [[NSMutableArray alloc] init];
+                     for (NSDictionary *venue in jsonObject[@"response"][@"groups"][0][@"items"]) {
+                         PBFoursquareVenue *fsqvenue = [[PBFoursquareVenue alloc] initWithName:venue[@"venue"][@"name"]
+                                                                                   latitude:venue[@"venue"][@"location"][@"lat"]
+                                                                                  longitude:venue[@"venue"][@"location"][@"lng"]
+                                                                                   distance:venue[@"venue"][@"location"][@"distance"]];
+                         [result addObject:fsqvenue];
+                     }
+                     [self.delegate getVenuesDidSuccedWithArray:result];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      NSLog(@"Error: %@", error);
-//                     [self.delegate ];
+                     [self.delegate getVenueDidFailed];
                  }];
-
-    [self.delegate getVenuesDidSuccedWithArray:@[]];
 }
 
-#pragma mark - CLLocationManagerDelegate
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    [self.delegate getLocationDidFailedWithError:error];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    CLLocation *currentLocation = newLocation;
-    if (currentLocation != nil) {
-        self.currentLocation = [NSString stringWithFormat:@"%f,%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude];
-        [self getVenues];
-    }
-}
 
 @end

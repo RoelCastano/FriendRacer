@@ -8,12 +8,16 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 #import "SplashViewController.h"
+#import "PBFoursquareAPI.h"
+#import "RoadyCore.h"
+#import <CoreLocation/CoreLocation.h>
 #import "Session.h"
 
-@interface SplashViewController ()
+@interface SplashViewController () <PBFoursquareAPIDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
 @property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property CLLocationManager *locationManager;
 @end
 
 @implementation SplashViewController
@@ -22,6 +26,12 @@
     [super viewDidLoad];
     self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     self.loginView.delegate = self;
+    self.locationManager = [[CLLocationManager alloc] init];
+
+    [self.locationManager requestAlwaysAuthorization];
+    
+    [RoadyCore sharedInstance].foursquare.delegate = self;
+    [self searchVenues];
 
     // Do any additional setup after loading the view.
 }
@@ -63,5 +73,47 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+#pragma mark -Foursquare search
+
+- (void)searchVenues {
+    //@TODO - start activity indicator
+    [self getCurrentLocation];
+}
+
+#pragma mark - Foursquare delegate
+
+- (void)getVenuesDidSuccedWithArray:(NSArray *)venues {
+    
+}
+
+- (void)getVenueDidFailed {
+    
+}
+
+#pragma mark - Get Location
+
+
+- (void)getCurrentLocation {
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    //@TODO - handle error
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    CLLocation *currentLocation = newLocation;
+    if (currentLocation != nil) {
+        [[RoadyCore sharedInstance].foursquare getVenuesWithLocation: [NSString stringWithFormat:@"%f,%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude]];
+    }
+}
+
+
 
 @end

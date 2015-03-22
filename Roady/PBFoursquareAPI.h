@@ -10,12 +10,11 @@
 
 @protocol PBFoursquareAPIDelegate <NSObject>
 - (void)getVenueDidFailed;
-- (void)getLocationDidFailedWithError:(NSError *)error;
 - (void)getVenuesDidSuccedWithArray:(NSArray *)venues;
 @end
 
 @interface PBFoursquareAPI : NSObject
 @property id<PBFoursquareAPIDelegate> delegate;
 + (void)setup;
-- (void)startGetVenuesRequest;
+- (void)getVenuesWithLocation:(NSString *)location;
 @end
