@@ -78,6 +78,10 @@
                                                  DTInvitationPopupViewController *popupController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"invitationPopup"];
                                                  popupController.adminName = jsonObject[@"race"][@"admin_name"];
                                                  popupController.placeName = jsonObject[@"race"][@"name"];
+                                                 popupController.game = [[DTRace alloc] initWithName:jsonObject[@"race"][@"name"]
+                                                                                               mapId:jsonObject[@"race"][@"map_id"]
+                                                                                                 lat:jsonObject[@"race"][@"lat"]
+                                                                                                 lng:jsonObject[@"race"][@"lng"]];
                                                  
                                                  BKTBlurParameters *blurParameters = [BKTBlurParameters new];
                                                  blurParameters.alpha = 1.0f;

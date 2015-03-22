@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTRace.h"
 
 @interface DTInvitationPopupViewController : UIViewController
 @property NSString *adminName;
 @property NSString *placeName;
+@property DTRace *game;
 @end
