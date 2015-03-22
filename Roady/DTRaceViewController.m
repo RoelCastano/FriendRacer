@@ -33,6 +33,7 @@
 @property (strong, nonatomic) NSMutableArray* friends;
 @property (assign) BOOL firstTime;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property NSTimer *timer;
 
 @end
 
@@ -52,7 +53,8 @@
     self.nameLabel.text = self.game.name;
     self.friendsTableView.delegate = self;
     self.friendsTableView.dataSource = self;
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateTable) userInfo:nil repeats:YES];
+    [self updateTable];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateTable) userInfo:nil repeats:YES];
     
 }
 
@@ -152,12 +154,11 @@
     CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:[self.game.lat doubleValue] longitude:[self.game.lng doubleValue]];
     
     CLLocationDistance dist = [self.locationManager.location distanceFromLocation:loc2];
-    
     CLLocationSpeed speed = [self.locationManager.location speed];
     [self.userFirebase updateChildValues:@{
                                            @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
                                            @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude],
-                                           @"distance": [NSString stringWithFormat:@"%f", dist],
+                                           @"distance": [NSString stringWithFormat:@"%i m", (int)dist],
                                            @"speed": [NSNumber numberWithDouble:speed],
                                            @"name": activeSession.currentUser.name
                                            }];
@@ -206,24 +207,6 @@
     return nil;
 }
 
-/*
- 
- - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
- MKAnnotationView *aV;
- for (aV in views) {
- CGRect endFrame = aV.frame;
- 
- aV.frame = CGRectMake(aV.frame.origin.x, aV.frame.origin.y - 230.0, aV.frame.size.width, aV.frame.size.height);
- 
- [UIView beginAnimations:nil context:NULL];
- [UIView setAnimationDuration:0.45];
- [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
- [aV setFrame:endFrame];
- [UIView commitAnimations];
- 
- }
- }*/
-
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     
@@ -237,6 +220,9 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.locationManager stopUpdatingLocation];
+    [self.userFirebase removeAllObservers];
+    [self.roadyFirebase removeAllObservers];
+    [self.timer invalidate];
 }
 
 -(void)setGame:(DTRace *)game {
@@ -281,7 +267,7 @@
         } else {
             cell.distanceLabel.text = @"Arrived";
         }
-        [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", arr[0][@"uid"]]]];
+        [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", [[user allKeys] objectAtIndex:0]]]];
     }
     else {
         cell.nameLabel.text = self.users[indexPath.row][@"name"];
