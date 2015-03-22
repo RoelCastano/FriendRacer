@@ -68,7 +68,7 @@
                     NSError *error;
                     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
                     if (jsonObject) {
-                        if (jsonObject[@"accepted"]){
+                        if (![jsonObject[@"accepted"] boolValue]){
                             DTRootViewController *raceViewController;
                             raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
                             [self presentViewController:raceViewController
