@@ -17,10 +17,12 @@
 #import "MHUser.h"
 #import "DTRaceViewController.h"
 #import "DTRace.h"
+#import "UIImageView+WebCache.h"
 
 @interface DTNewRaceViewController () <DTSearchPlaceDelegate, UITableViewDelegate, UITableViewDataSource>
 @property PBFoursquareVenue *selectedVenue;
 @property (weak, nonatomic) IBOutlet UITableView *friendsTable;
+@property (weak, nonatomic) IBOutlet UIView *venueWrapper;
 @property (weak, nonatomic) IBOutlet UIButton *venueButton;
 @property (weak, nonatomic) IBOutlet UILabel *venueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startRacingButton;
@@ -49,12 +51,12 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.selectedVenue) {
-        self.venueButton.hidden = YES;
+        self.venueButton.titleLabel.text = @"";
         self.venueLabel.hidden = NO;
         self.venueLabel.text = self.selectedVenue.name;
+        self.venueLabel.textColor = [UIColor colorWithRed:192.0/255.0 green:0 blue:71.0/255.0  alpha:1.0];
     }
     else {
-        self.venueButton.hidden = NO;
         self.venueLabel.hidden = YES;
     }
 }
@@ -77,7 +79,14 @@
     }
     
     cell.name.text = self.friends[indexPath.row][@"name"];
-    cell.profilePicture.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.friends[indexPath.row][@"uid"]]]]];
+    [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.friends[indexPath.row][@"uid"]]]];
+    
+    if (indexPath.row % 2 == 1) {
+        cell.backgroundColor = [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
+    }
+    else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
     return cell;
 }
 
@@ -103,6 +112,7 @@
 
 - (void)selectVenue:(PBFoursquareVenue *)venue {
     self.selectedVenue = venue;
+    self.venueWrapper.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:180.0/255.0 blue:76.0/255.0 alpha:1.0];
     self.startRacingButton.enabled = [self shouldPermitStartRace];
     [self updateStartRaceView];
 }
@@ -118,7 +128,7 @@
 #pragma mark - load friends
 
 - (void)loadFacebookFriends {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.friendsTable animated:YES];
     [HMApiClient sharedClient];
     AFHTTPClient *httpClient = [HMApiClient sharedClient];
     [httpClient getPath:[NSString stringWithFormat:@"api/users/friends"]
@@ -134,10 +144,11 @@
                     }
                     self.friends = [NSArray arrayWithArray:results];
                     
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD hideAllHUDsForView:self.self.friendsTable animated:YES];
                     [self.friendsTable reloadData];
                 }
                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [MBProgressHUD hideAllHUDsForView:self.friendsTable animated:YES];
                     NSLog(@"Error: %@", error);
                 }];
 }
@@ -191,5 +202,10 @@
                     NSLog(@"Error: %@", error);
                 }];
 }
+
+- (IBAction)shouldCloseModal:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end
