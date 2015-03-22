@@ -17,6 +17,7 @@
 #import "MHUser.h"
 #import "DTRaceViewController.h"
 #import "DTRace.h"
+#import "UIImageView+WebCache.h"
 
 @interface DTNewRaceViewController () <DTSearchPlaceDelegate, UITableViewDelegate, UITableViewDataSource>
 @property PBFoursquareVenue *selectedVenue;
@@ -78,7 +79,7 @@
     }
     
     cell.name.text = self.friends[indexPath.row][@"name"];
-    cell.profilePicture.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.friends[indexPath.row][@"uid"]]]]];
+    [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.friends[indexPath.row][@"uid"]]]];
     
     if (indexPath.row % 2 == 1) {
         cell.backgroundColor = [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
@@ -127,7 +128,7 @@
 #pragma mark - load friends
 
 - (void)loadFacebookFriends {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.friendsTable animated:YES];
     [HMApiClient sharedClient];
     AFHTTPClient *httpClient = [HMApiClient sharedClient];
     [httpClient getPath:[NSString stringWithFormat:@"api/users/friends"]
@@ -143,10 +144,11 @@
                     }
                     self.friends = [NSArray arrayWithArray:results];
                     
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [MBProgressHUD hideAllHUDsForView:self.self.friendsTable animated:YES];
                     [self.friendsTable reloadData];
                 }
                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [MBProgressHUD hideAllHUDsForView:self.friendsTable animated:YES];
                     NSLog(@"Error: %@", error);
                 }];
 }
@@ -200,5 +202,10 @@
                     NSLog(@"Error: %@", error);
                 }];
 }
+
+- (IBAction)shouldCloseModal:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

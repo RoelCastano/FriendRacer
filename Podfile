@@ -10,6 +10,7 @@ target 'Roady' do
     pod 'REFrostedViewController', '~> 2.4.7'
     pod 'Firebase', '~> 2.2'
     pod 'MBProgressHUD'
+    pod 'SDWebImage'
 end
 
 target 'RoadyTests' do
