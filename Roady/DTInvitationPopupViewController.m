@@ -15,15 +15,25 @@
 
 @interface DTInvitationPopupViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *adminNameLabel;
+@property (weak, nonatomic) IBOutlet UIView *participantsView;
 @property (weak, nonatomic) IBOutlet UILabel *placeLabel;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIImageView *inviteeImage;
 @end
 
 @implementation DTInvitationPopupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.participantsView.layer.cornerRadius = 25.0f;
+    self.participantsView.layer.masksToBounds = YES;
     self.adminNameLabel.text = self.adminName;
     self.placeLabel.text = self.placeName;
+    self.containerView.layer.cornerRadius = 8.0f;
+    self.containerView.layer.masksToBounds = YES;
+    self.inviteeImage.layer.cornerRadius = self.inviteeImage.frame.size.width/2;
+    [self.inviteeImage.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [self.inviteeImage.layer setBorderWidth:2.0f];
 }
 
 - (IBAction)didClickedAccpet:(id)sender {
