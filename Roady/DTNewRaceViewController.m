@@ -177,29 +177,30 @@
                                           @"lat" : self.selectedVenue.lat,
                                           @"lng" : self.selectedVenue.lng,
                                           @"members" : membersArray
-                                     }};
+                                          }};
     AFHTTPClient *httpClient = [HMApiClient sharedClient];
     [httpClient postPath:[NSString stringWithFormat:@"api/races"]
               parameters:params
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    NSError *error;
-                    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-                    DTRaceViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
-                    DTRace *race = [[DTRace alloc] initWithName:jsonObject[@"name"]
-                                                          mapId:jsonObject[@"map_id"]
-                                                            lat:jsonObject[@"lat"]
-                                                            lng:jsonObject[@"lng"]];
-                    viewController.game = race;
-                    viewController.users = [NSArray arrayWithArray:jsonObject[@"users"]];
-                    [self presentViewController:viewController
-                                       animated:YES
-                                     completion:^{
-                                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                     }];
-                }
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     NSError *error;
+                     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+                     DTRaceViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
+                     DTRace *race = [[DTRace alloc] initWithName:jsonObject[@"name"]
+                                                           mapId:jsonObject[@"map_id"]
+                                                             lat:jsonObject[@"lat"]
+                                                             lng:jsonObject[@"lng"]];
+                     viewController.game = race;
+                     viewController.users = [NSArray arrayWithArray:jsonObject[@"users"]];
+                     [self presentViewController:viewController
+                                        animated:YES
+                                      completion:^{
+                                          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                      }];
+                 }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    NSLog(@"Error: %@", error);
-                }];
+                     NSLog(@"Error: %@", error);
+                 }];
+    
 }
 
 - (IBAction)shouldCloseModal:(id)sender {
