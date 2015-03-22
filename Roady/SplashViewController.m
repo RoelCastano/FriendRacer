@@ -12,6 +12,11 @@
 #import "RoadyCore.h"
 #import "Session.h"
 #import "DTRootViewController.h"
+#import <RestKit/RestKit.h>
+#import "HMApiClient.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "DTRaceViewController.h"
+#import "DTRace.h"
 
 @interface SplashViewController ()
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
@@ -52,20 +57,35 @@
     MHUser *currentUser = [[MHUser alloc] initWithName:user.name authToken:[FBSession activeSession].accessTokenData.accessToken andId:user.objectID];
     [Session newSessionForUser:currentUser];
     
-    DTRootViewController *rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
-    [self presentViewController:rootViewController
-                       animated:YES
-                     completion:nil];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [HMApiClient sharedClient];
+    AFHTTPClient *httpClient = [HMApiClient sharedClient];
+    [httpClient getPath:[NSString stringWithFormat:@"api/users/current_race"]
+              parameters:nil
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     NSError *error;
+                     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+                     UIViewController *viewController;
+                     if (jsonObject) {
+                         //parse json object to game object
+                         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
+                         ((DTRaceViewController *)viewController).game = [[DTRace alloc] initWithName:jsonObject[@"name"]
+                                                                                                mapId:jsonObject[@"map_id"]
+                                                                                                  lat:jsonObject[@"lat"]
+                                                                                                  lng:jsonObject[@"lng"]];
+                     }
+                     else {
+                         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+                     }
+                     [self presentViewController:viewController
+                                        animated:YES
+                                      completion:^{
+                                          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                      }];
+                 }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     NSLog(@"Error: %@", error);
+                 }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

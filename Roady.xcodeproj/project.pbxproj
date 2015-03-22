@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		236C4C501ABE70D5006BA9F4 /* DTFacebookFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */; };
 		236C4C541ABE89A5006BA9F4 /* CCMBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C531ABE89A5006BA9F4 /* CCMBorderView.m */; };
+		236C4C571ABE8D01006BA9F4 /* DTRace.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C561ABE8D01006BA9F4 /* DTRace.m */; };
 		23B71B391ABE0D5100CAE57B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B381ABE0D5100CAE57B /* main.m */; };
 		23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B3B1ABE0D5100CAE57B /* AppDelegate.m */; };
 		23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B3E1ABE0D5100CAE57B /* ViewController.m */; };
@@ -52,6 +53,8 @@
 		236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFacebookFriendCell.m; sourceTree = "<group>"; };
 		236C4C511ABE8987006BA9F4 /* CCMBorderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMBorderView.h; sourceTree = "<group>"; };
 		236C4C531ABE89A5006BA9F4 /* CCMBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMBorderView.m; sourceTree = "<group>"; };
+		236C4C551ABE8D01006BA9F4 /* DTRace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTRace.h; sourceTree = "<group>"; };
+		236C4C561ABE8D01006BA9F4 /* DTRace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTRace.m; sourceTree = "<group>"; };
 		239237A7A195373C025E7B8D /* libPods-Roady.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Roady.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B71B331ABE0D5100CAE57B /* Roady.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roady.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B71B371ABE0D5100CAE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 			children = (
 				23E1C58E1ABE33840084EEE7 /* MHUser.h */,
 				23E1C58F1ABE33840084EEE7 /* MHUser.m */,
+				236C4C551ABE8D01006BA9F4 /* DTRace.h */,
+				236C4C561ABE8D01006BA9F4 /* DTRace.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				7DAE35AD1ABE6C9C006759BE /* UIImage+ImageEffects.m in Sources */,
 				23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */,
 				23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */,
+				236C4C571ABE8D01006BA9F4 /* DTRace.m in Sources */,
 				23E1C58C1ABE33660084EEE7 /* Session.m in Sources */,
 				23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */,
 				236C4C541ABE89A5006BA9F4 /* CCMBorderView.m in Sources */,

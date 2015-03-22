@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "UIView+blurred.h"
 #import "UIImage+ImageEffects.h"
+#import "DTRace.h"
 
 @interface DTRaceViewController : UIViewController
-
+@property DTRace *game;
 @end
