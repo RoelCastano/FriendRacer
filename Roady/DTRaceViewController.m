@@ -223,6 +223,7 @@
                          [self presentViewController:raceViewController
                                             animated:YES
                                           completion:^{
+                                              [raceViewController.navigationController popToRootViewControllerAnimated:YES];
                                           }];
                      }];
                  }
