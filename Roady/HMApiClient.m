@@ -27,7 +27,7 @@ static NSString * const ILApiVersion = @"1";
 
 + (void)setAuthorizationToken:(NSString *)accessToken
 {
-    [self.sharedClient setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Token token=%@", accessToken]];
+    [self.sharedClient setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"%@", accessToken]];
 }
 
 + (void)clearAuthorizationToken
@@ -42,8 +42,6 @@ static NSString * const ILApiVersion = @"1";
     
     if (self) {
         [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-        
-        [self setDefaultHeader:@"Accept" value:[NSString stringWithFormat:@"application/vnd.moneypool.mx+json; version=%@", ILApiVersion]];
     }
     
     return self;

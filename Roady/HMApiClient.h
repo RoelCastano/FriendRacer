@@ -9,7 +9,7 @@
 #import "AFHTTPClient.h"
 #import <AFNetworking/AFHTTPClient.h>
 
-static NSString * const ILBaseURLString = @"http://roady.herokuapp.com/";
+static NSString * const ILBaseURLString = @"http://roady.herokuapp.com";
 
 @interface HMApiClient : AFHTTPClient
 

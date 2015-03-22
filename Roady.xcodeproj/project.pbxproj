@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		236C4C501ABE70D5006BA9F4 /* DTFacebookFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */; };
 		23B71B391ABE0D5100CAE57B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B381ABE0D5100CAE57B /* main.m */; };
 		23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B3B1ABE0D5100CAE57B /* AppDelegate.m */; };
 		23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B3E1ABE0D5100CAE57B /* ViewController.m */; };
@@ -28,6 +29,7 @@
 		23E1C59C1ABE57D90084EEE7 /* DTNewRaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C59B1ABE57D90084EEE7 /* DTNewRaceViewController.m */; };
 		23E1C59F1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C59E1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m */; };
 		23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */; };
+		23E1C5A51ABE5A3F0084EEE7 /* CCMBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5A41ABE5A3F0084EEE7 /* CCMBorderView.m */; };
 		3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 239237A7A195373C025E7B8D /* libPods-Roady.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		236C4C4E1ABE70D5006BA9F4 /* DTFacebookFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFacebookFriendCell.h; sourceTree = "<group>"; };
+		236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFacebookFriendCell.m; sourceTree = "<group>"; };
 		239237A7A195373C025E7B8D /* libPods-Roady.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Roady.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B71B331ABE0D5100CAE57B /* Roady.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roady.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B71B371ABE0D5100CAE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		23E1C59E1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSearchPlaceModalViewController.m; sourceTree = "<group>"; };
 		23E1C5A01ABE58ED0084EEE7 /* DTRaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTRaceViewController.h; sourceTree = "<group>"; };
 		23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTRaceViewController.m; sourceTree = "<group>"; };
+		23E1C5A31ABE5A3F0084EEE7 /* CCMBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCMBorderView.h; path = "../../../../Downloads/CCMBorderView-master/CCMBorderView/Objective-C/CCMBorderView.h"; sourceTree = "<group>"; };
+		23E1C5A41ABE5A3F0084EEE7 /* CCMBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCMBorderView.m; path = "../../../../Downloads/CCMBorderView-master/CCMBorderView/Objective-C/CCMBorderView.m"; sourceTree = "<group>"; };
 		6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.release.xcconfig"; sourceTree = "<group>"; };
 		C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		236C4C4D1ABE70AF006BA9F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				236C4C4E1ABE70D5006BA9F4 /* DTFacebookFriendCell.h */,
+				236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		23B71B2A1ABE0D5100CAE57B = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +149,7 @@
 				23E1C5861ABE33400084EEE7 /* Controllers */,
 				23B71B671ABE1B3300CAE57B /* Vendor */,
 				23B71B631ABE142600CAE57B /* Roady Core */,
+				236C4C4D1ABE70AF006BA9F4 /* Views */,
 				23B71B3A1ABE0D5100CAE57B /* AppDelegate.h */,
 				23B71B3B1ABE0D5100CAE57B /* AppDelegate.m */,
 				23B71B401ABE0D5100CAE57B /* Main.storyboard */,
@@ -186,6 +202,8 @@
 		23B71B671ABE1B3300CAE57B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				23E1C5A31ABE5A3F0084EEE7 /* CCMBorderView.h */,
+				23E1C5A41ABE5A3F0084EEE7 /* CCMBorderView.m */,
 				23E1C57E1ABE24550084EEE7 /* PBFoursquareAPI.h */,
 				23E1C57F1ABE24550084EEE7 /* PBFoursquareAPI.m */,
 				23E1C5811ABE25A00084EEE7 /* PBFoursquareVenue.h */,
@@ -382,8 +400,10 @@
 				23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */,
 				23E1C58C1ABE33660084EEE7 /* Session.m in Sources */,
 				23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */,
+				236C4C501ABE70D5006BA9F4 /* DTFacebookFriendCell.m in Sources */,
 				23E1C5961ABE51940084EEE7 /* DTRootViewController.m in Sources */,
 				23E1C59F1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m in Sources */,
+				23E1C5A51ABE5A3F0084EEE7 /* CCMBorderView.m in Sources */,
 				23E1C59C1ABE57D90084EEE7 /* DTNewRaceViewController.m in Sources */,
 				23E1C5891ABE334C0084EEE7 /* SplashViewController.m in Sources */,
 				23E1C5801ABE24550084EEE7 /* PBFoursquareAPI.m in Sources */,

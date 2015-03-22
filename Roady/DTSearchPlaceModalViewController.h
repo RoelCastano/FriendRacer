@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PBFoursquareVenue.h"
+
+@protocol DTSearchPlaceDelegate <NSObject>
+- (void)selectVenue:(PBFoursquareVenue *)venue;
+@end
 
 @interface DTSearchPlaceModalViewController : UIViewController
-
+@property id<DTSearchPlaceDelegate> delegate;
 @end
