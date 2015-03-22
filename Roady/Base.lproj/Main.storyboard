@@ -207,9 +207,9 @@
                             <constraint firstItem="er3-IG-kgk" firstAttribute="top" secondItem="EOp-QA-3jg" secondAttribute="bottom" constant="3" id="da7-Oc-TgT"/>
                             <constraint firstItem="DU3-us-9Nz" firstAttribute="top" secondItem="UWW-0W-7tE" secondAttribute="bottom" constant="23" id="fX9-wn-wfW"/>
                             <constraint firstItem="ftV-7U-Zcv" firstAttribute="top" secondItem="er3-IG-kgk" secondAttribute="bottom" constant="1" id="hRm-Nw-gMU"/>
+                            <constraint firstAttribute="centerX" secondItem="DU3-us-9Nz" secondAttribute="centerX" id="ojE-Gu-xWM"/>
                             <constraint firstItem="EOp-QA-3jg" firstAttribute="top" secondItem="UWW-0W-7tE" secondAttribute="bottom" constant="-4" id="tUA-c9-938"/>
                             <constraint firstItem="DU3-us-9Nz" firstAttribute="width" secondItem="J9K-KJ-7VW" secondAttribute="width" id="yCj-9X-jii"/>
-                            <constraint firstItem="DU3-us-9Nz" firstAttribute="leading" secondItem="J9K-KJ-7VW" secondAttribute="leadingMargin" constant="-16" id="yhs-xn-sgT"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
