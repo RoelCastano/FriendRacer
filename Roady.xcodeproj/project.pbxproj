@@ -25,6 +25,9 @@
 		23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5921ABE338B0084EEE7 /* HMApiClient.m */; };
 		23E1C5961ABE51940084EEE7 /* DTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5951ABE51940084EEE7 /* DTRootViewController.m */; };
 		23E1C5991ABE545A0084EEE7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5981ABE545A0084EEE7 /* MainViewController.m */; };
+		23E1C59C1ABE57D90084EEE7 /* DTNewRaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C59B1ABE57D90084EEE7 /* DTNewRaceViewController.m */; };
+		23E1C59F1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C59E1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m */; };
+		23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */; };
 		3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 239237A7A195373C025E7B8D /* libPods-Roady.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,12 @@
 		23E1C5951ABE51940084EEE7 /* DTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTRootViewController.m; sourceTree = "<group>"; };
 		23E1C5971ABE545A0084EEE7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		23E1C5981ABE545A0084EEE7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		23E1C59A1ABE57D90084EEE7 /* DTNewRaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTNewRaceViewController.h; sourceTree = "<group>"; };
+		23E1C59B1ABE57D90084EEE7 /* DTNewRaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTNewRaceViewController.m; sourceTree = "<group>"; };
+		23E1C59D1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSearchPlaceModalViewController.h; sourceTree = "<group>"; };
+		23E1C59E1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSearchPlaceModalViewController.m; sourceTree = "<group>"; };
+		23E1C5A01ABE58ED0084EEE7 /* DTRaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTRaceViewController.h; sourceTree = "<group>"; };
+		23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTRaceViewController.m; sourceTree = "<group>"; };
 		6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.release.xcconfig"; sourceTree = "<group>"; };
 		C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +205,12 @@
 				23E1C5951ABE51940084EEE7 /* DTRootViewController.m */,
 				23E1C5971ABE545A0084EEE7 /* MainViewController.h */,
 				23E1C5981ABE545A0084EEE7 /* MainViewController.m */,
+				23E1C59A1ABE57D90084EEE7 /* DTNewRaceViewController.h */,
+				23E1C59B1ABE57D90084EEE7 /* DTNewRaceViewController.m */,
+				23E1C59D1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.h */,
+				23E1C59E1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m */,
+				23E1C5A01ABE58ED0084EEE7 /* DTRaceViewController.h */,
+				23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -364,9 +379,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */,
+				23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */,
 				23E1C58C1ABE33660084EEE7 /* Session.m in Sources */,
 				23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */,
 				23E1C5961ABE51940084EEE7 /* DTRootViewController.m in Sources */,
+				23E1C59F1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m in Sources */,
+				23E1C59C1ABE57D90084EEE7 /* DTNewRaceViewController.m in Sources */,
 				23E1C5891ABE334C0084EEE7 /* SplashViewController.m in Sources */,
 				23E1C5801ABE24550084EEE7 /* PBFoursquareAPI.m in Sources */,
 				23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */,
