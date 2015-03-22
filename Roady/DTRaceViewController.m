@@ -264,6 +264,7 @@
     [httpClient postPath:@"api/races/exit_race"
               parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     [self.userFirebase removeValue];
                      DTRootViewController *raceViewController;
                      raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
                      [self presentViewController:raceViewController
