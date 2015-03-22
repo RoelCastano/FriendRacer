@@ -15,6 +15,8 @@
 #import "HMApiClient.h"
 #import "Session.h"
 #import "MHUser.h"
+#import "DTRaceViewController.h"
+#import "DTRace.h"
 
 @interface DTNewRaceViewController () <DTSearchPlaceDelegate, UITableViewDelegate, UITableViewDataSource>
 @property PBFoursquareVenue *selectedVenue;
@@ -171,11 +173,21 @@
               parameters:params
                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
                     NSError *error;
-                    NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-                    //present view controller
-                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+                    DTRaceViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
+                    DTRace *race = [[DTRace alloc] initWithName:jsonObject[@"name"]
+                                                          mapId:jsonObject[@"map_id"]
+                                                            lat:jsonObject[@"lat"]
+                                                            lng:jsonObject[@"lng"]];
+                    viewController.game = race;
+                    viewController.users = [NSArray arrayWithArray:jsonObject[@"users"]];
+                    [self presentViewController:viewController
+                                       animated:YES
+                                     completion:^{
+                                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                     }];
                 }
-                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     NSLog(@"Error: %@", error);
                 }];
 }

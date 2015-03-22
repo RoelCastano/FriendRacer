@@ -13,4 +13,5 @@
 
 @interface DTRaceViewController : UIViewController
 @property DTRace *game;
+@property NSArray *users;
 @end
