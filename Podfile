@@ -7,6 +7,7 @@ target 'Roady' do
     pod 'Facebook-iOS-SDK', '~> 3.23'
     pod 'AMSlideMenu', '~> 1.5.4'
     pod 'RestKit', '~> 0.20.0'
+    pod 'REFrostedViewController', '~> 2.4.7'
 end
 
 target 'RoadyTests' do

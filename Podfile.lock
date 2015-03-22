@@ -4,6 +4,7 @@ PODS:
   - Bolts (1.1.4)
   - Facebook-iOS-SDK (3.23.1):
     - Bolts (~> 1.0)
+  - REFrostedViewController (2.4.7)
   - RestKit (0.20.3):
     - RestKit/Core
   - RestKit/Core (0.20.3):
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - AMSlideMenu (~> 1.5.4)
   - Facebook-iOS-SDK (~> 3.23)
+  - REFrostedViewController (~> 2.4.7)
   - RestKit (~> 0.20.0)
 
 SPEC CHECKSUMS:
@@ -32,6 +34,7 @@ SPEC CHECKSUMS:
   AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
   Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
   Facebook-iOS-SDK: 89dae50e975ebab95a01b0962d27277fc9cf08fd
+  REFrostedViewController: 08870a24788191339608b80b2bd4fce549858f0d
   RestKit: 7f9490e709ee745e166c4d2aa7a8d132831275b0
   SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
   TransitionKit: b573f93c422f6aedf7d40e93e7c2f202d1295063

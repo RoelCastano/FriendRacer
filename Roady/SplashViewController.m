@@ -12,6 +12,7 @@
 #import "RoadyCore.h"
 #import <CoreLocation/CoreLocation.h>
 #import "Session.h"
+#import "DTRootViewController.h"
 
 @interface SplashViewController () <PBFoursquareAPIDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
@@ -60,8 +61,11 @@
     
     MHUser *currentUser = [[MHUser alloc] initWithName:user.name authToken:[FBSession activeSession].accessTokenData.accessToken andId:user.objectID];
     [Session newSessionForUser:currentUser];
-    self.profilePictureView.profileID = activeSession.currentUser.userId;
-    self.nameLabel.text = activeSession.currentUser.name;
+    
+    DTRootViewController *rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+    [self presentViewController:rootViewController
+                       animated:YES
+                     completion:nil];
 }
 
 /*

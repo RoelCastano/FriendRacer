@@ -23,6 +23,8 @@
 		23E1C58C1ABE33660084EEE7 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C58B1ABE33660084EEE7 /* Session.m */; };
 		23E1C5901ABE33840084EEE7 /* MHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C58F1ABE33840084EEE7 /* MHUser.m */; };
 		23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5921ABE338B0084EEE7 /* HMApiClient.m */; };
+		23E1C5961ABE51940084EEE7 /* DTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5951ABE51940084EEE7 /* DTRootViewController.m */; };
+		23E1C5991ABE545A0084EEE7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5981ABE545A0084EEE7 /* MainViewController.m */; };
 		3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 239237A7A195373C025E7B8D /* libPods-Roady.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,10 @@
 		23E1C58F1ABE33840084EEE7 /* MHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUser.m; sourceTree = "<group>"; };
 		23E1C5911ABE338B0084EEE7 /* HMApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMApiClient.h; sourceTree = "<group>"; };
 		23E1C5921ABE338B0084EEE7 /* HMApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMApiClient.m; sourceTree = "<group>"; };
+		23E1C5941ABE51940084EEE7 /* DTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTRootViewController.h; sourceTree = "<group>"; };
+		23E1C5951ABE51940084EEE7 /* DTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTRootViewController.m; sourceTree = "<group>"; };
+		23E1C5971ABE545A0084EEE7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		23E1C5981ABE545A0084EEE7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.release.xcconfig"; sourceTree = "<group>"; };
 		C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +192,10 @@
 				23B71B3E1ABE0D5100CAE57B /* ViewController.m */,
 				23E1C5871ABE334C0084EEE7 /* SplashViewController.h */,
 				23E1C5881ABE334C0084EEE7 /* SplashViewController.m */,
+				23E1C5941ABE51940084EEE7 /* DTRootViewController.h */,
+				23E1C5951ABE51940084EEE7 /* DTRootViewController.m */,
+				23E1C5971ABE545A0084EEE7 /* MainViewController.h */,
+				23E1C5981ABE545A0084EEE7 /* MainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -356,9 +366,11 @@
 				23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */,
 				23E1C58C1ABE33660084EEE7 /* Session.m in Sources */,
 				23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */,
+				23E1C5961ABE51940084EEE7 /* DTRootViewController.m in Sources */,
 				23E1C5891ABE334C0084EEE7 /* SplashViewController.m in Sources */,
 				23E1C5801ABE24550084EEE7 /* PBFoursquareAPI.m in Sources */,
 				23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */,
+				23E1C5991ABE545A0084EEE7 /* MainViewController.m in Sources */,
 				23B71B661ABE145100CAE57B /* RoadyCore.m in Sources */,
 				23E1C5831ABE25A00084EEE7 /* PBFoursquareVenue.m in Sources */,
 				23E1C5901ABE33840084EEE7 /* MHUser.m in Sources */,

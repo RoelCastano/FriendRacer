@@ -9,13 +9,7 @@
 #import "AFHTTPClient.h"
 #import <AFNetworking/AFHTTPClient.h>
 
-# ifdef STAGING
-static NSString * const ILBaseURLString = @"http://moneypool-staging.herokuapp.com/api";
-# elif DEBUG
-static NSString * const ILBaseURLString = @"http://api.moneypool.dev";
-# else
-static NSString * const ILBaseURLString = @"http://moneypool.mx";
-# endif
+static NSString * const ILBaseURLString = @"http://roady.herokuapp.com/";
 
 @interface HMApiClient : AFHTTPClient
 
