@@ -11,6 +11,7 @@
 #import "PBFoursquareAPI.h"
 #import "RoadyCore.h"
 #import "Session.h"
+#import <Parse/Parse.h>
 #import "DTRootViewController.h"
 #import <RestKit/RestKit.h>
 #import "HMApiClient.h"
@@ -65,6 +66,12 @@
     [httpClient getPath:[NSString stringWithFormat:@"api/users/current_race"]
              parameters:nil
                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                    currentInstallation.channels = @[];
+                    [currentInstallation addUniqueObject:[NSString stringWithFormat:@"userId-%@", activeSession.currentUser.userId] forKey:@"channels"];
+                    [currentInstallation addUniqueObject:@"global" forKey:@"channels"];
+                    [currentInstallation saveInBackground];
+
                     NSError *error;
                     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
                     if (jsonObject) {

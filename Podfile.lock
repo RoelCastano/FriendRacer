@@ -7,6 +7,8 @@ PODS:
   - Firebase (2.2.0)
   - MaryPopin (1.4.2)
   - MBProgressHUD (0.9.1)
+  - Parse (1.6.5):
+    - Bolts (~> 1.1)
   - REFrostedViewController (2.4.7)
   - RestKit (0.20.3):
     - RestKit/Core (= 0.20.3)
@@ -35,6 +37,7 @@ DEPENDENCIES:
   - Firebase (~> 2.2)
   - MaryPopin
   - MBProgressHUD
+  - Parse (~> 1.6)
   - REFrostedViewController (~> 2.4.7)
   - RestKit (~> 0.20.0)
   - SDWebImage
@@ -47,6 +50,7 @@ SPEC CHECKSUMS:
   Firebase: e7a2ea2ffeff99f9c37028b354194dcc9718d36b
   MaryPopin: 714fefdd2db1e53fba4fc2860d34a43ddc70ac77
   MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
+  Parse: a21db4037d70a68a4ec64ecc0f327ed475cc14f8
   REFrostedViewController: 08870a24788191339608b80b2bd4fce549858f0d
   RestKit: 7f9490e709ee745e166c4d2aa7a8d132831275b0
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29

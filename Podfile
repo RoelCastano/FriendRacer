@@ -12,6 +12,7 @@ target 'Roady' do
     pod 'MBProgressHUD'
     pod 'SDWebImage'
     pod 'MaryPopin'
+    pod 'Parse', '~> 1.6'
 end
 
 target 'RoadyTests' do
