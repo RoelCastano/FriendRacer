@@ -7,7 +7,9 @@
 //
 
 #import "Session.h"
+#import "MHUser.h"
 #import "HMApiClient.h"
+#import <Facebook-iOS-SDK/FacebookSDK/FacebookSDK.h>
 
 @implementation Session
 
@@ -33,37 +35,10 @@ Session *activeSession = nil;
     return self;
 }
 
-- (void)reloadUserData
-{
-    [MHUser loadUserWithId:self.currentUser.userId
-                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                       self.currentUser =mappingResult.array[0];
-                   }
-                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                       [AppDelegate showServeDownAlert];
-                   }];
-}
-
-- (void)reloadUserDataWithSuccess:(void (^)())sucess failure:(void (^)())failure
-{
-    [MHUser loadUserWithId:self.currentUser.userId
-                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                       self.currentUser =mappingResult.array[0];
-                       if (sucess) {
-                           sucess();
-                       }
-                   }
-                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                       [AppDelegate showServeDownAlert];
-                       if (failure) {
-                           failure();
-                       }
-                   }];
-}
 
 - (void) clearSessionAndToken
 {
-    [ILApiClient clearAuthorizationToken];
+    [HMApiClient clearAuthorizationToken];
     [[FBSession activeSession] closeAndClearTokenInformation];
     activeSession = nil;
 }
