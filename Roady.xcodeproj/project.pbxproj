@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2349181D1ABEB76100BC88B7 /* DTInvitationPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2349181C1ABEB76100BC88B7 /* DTInvitationPopupViewController.m */; };
 		236C4C501ABE70D5006BA9F4 /* DTFacebookFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */; };
 		236C4C541ABE89A5006BA9F4 /* CCMBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C531ABE89A5006BA9F4 /* CCMBorderView.m */; };
 		236C4C571ABE8D01006BA9F4 /* DTRace.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C561ABE8D01006BA9F4 /* DTRace.m */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2349181B1ABEB76100BC88B7 /* DTInvitationPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTInvitationPopupViewController.h; sourceTree = "<group>"; };
+		2349181C1ABEB76100BC88B7 /* DTInvitationPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTInvitationPopupViewController.m; sourceTree = "<group>"; };
 		236C4C4E1ABE70D5006BA9F4 /* DTFacebookFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFacebookFriendCell.h; sourceTree = "<group>"; };
 		236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFacebookFriendCell.m; sourceTree = "<group>"; };
 		236C4C511ABE8987006BA9F4 /* CCMBorderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMBorderView.h; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				23E1C59E1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m */,
 				23E1C5A01ABE58ED0084EEE7 /* DTRaceViewController.h */,
 				23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */,
+				2349181B1ABEB76100BC88B7 /* DTInvitationPopupViewController.h */,
+				2349181C1ABEB76100BC88B7 /* DTInvitationPopupViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 				23E1C5801ABE24550084EEE7 /* PBFoursquareAPI.m in Sources */,
 				23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */,
 				23E1C5991ABE545A0084EEE7 /* MainViewController.m in Sources */,
+				2349181D1ABEB76100BC88B7 /* DTInvitationPopupViewController.m in Sources */,
 				7DAE35B31ABE86A6006759BE /* HKCustomPointAnnotation.m in Sources */,
 				23B71B661ABE145100CAE57B /* RoadyCore.m in Sources */,
 				23E1C5831ABE25A00084EEE7 /* PBFoursquareVenue.m in Sources */,

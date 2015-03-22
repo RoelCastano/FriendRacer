@@ -17,6 +17,8 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "DTRaceViewController.h"
 #import "DTRace.h"
+#import <MaryPopin/UIViewController+MaryPopin.h>
+#import "DTInvitationPopupViewController.h"
 
 @interface SplashViewController ()
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
@@ -61,41 +63,67 @@
     [HMApiClient sharedClient];
     AFHTTPClient *httpClient = [HMApiClient sharedClient];
     [httpClient getPath:[NSString stringWithFormat:@"api/users/current_race"]
-              parameters:nil
-                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                     NSError *error;
-                     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-                     if (jsonObject) {
-                         //parse json object to game object
-                         DTRaceViewController *raceViewController;
-                         raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
-                         raceViewController.users = [NSArray arrayWithArray:jsonObject[@"users"]];
-
-                         raceViewController.game = [[DTRace alloc] initWithName:jsonObject[@"name"]
-                                                                                                mapId:jsonObject[@"map_id"]
-                                                                                                  lat:jsonObject[@"lat"]
-                                                                                                  lng:jsonObject[@"lng"]];
-                         [self presentViewController:raceViewController
-                                            animated:YES
-                                          completion:^{
-                                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                          }];
-
-                     }
-                     else {
-                         DTRootViewController *raceViewController;
-                         raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
-                         [self presentViewController:raceViewController
-                                            animated:YES
-                                          completion:^{
-                                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                          }];
-
-                     }
-                 }
-                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                     NSLog(@"Error: %@", error);
-                 }];
+             parameters:nil
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSError *error;
+                    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+                    if (jsonObject) {
+                        if (jsonObject[@"accepted"]){
+                            DTRootViewController *raceViewController;
+                            raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+                            [self presentViewController:raceViewController
+                                               animated:YES
+                                             completion:^{
+                                                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                                 DTInvitationPopupViewController *popupController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"invitationPopup"];
+                                                 popupController.adminName = jsonObject[@"race"][@"admin_name"];
+                                                 popupController.placeName = jsonObject[@"race"][@"name"];
+                                                 
+                                                 BKTBlurParameters *blurParameters = [BKTBlurParameters new];
+                                                 blurParameters.alpha = 1.0f;
+                                                 blurParameters.radius = 8.0f;
+                                                 blurParameters.tintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
+                                                 
+                                                 [popupController setBlurParameters:blurParameters];
+                                                 [popupController setPreferedPopinContentSize:CGSizeMake(280, 300)];
+                                                 [popupController setPopinTransitionDirection:BKTPopinTransitionDirectionTop];
+                                                 [popupController setPopinAlignment:BKTPopinAlignementOptionCentered];
+                                                 [popupController setPopinOptions:BKTPopinDisableAutoDismiss];
+                                                 [raceViewController presentPopinController:popupController animated:YES completion:nil];
+                                             }];
+                        }
+                        else {
+                            //parse json object to game object
+                            DTRaceViewController *raceViewController;
+                            raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
+                            raceViewController.users = [NSArray arrayWithArray:jsonObject[@"race"][@"users"]];
+                            
+                            raceViewController.game = [[DTRace alloc] initWithName:jsonObject[@"race"][@"name"]
+                                                                             mapId:jsonObject[@"race"][@"map_id"]
+                                                                               lat:jsonObject[@"race"][@"lat"]
+                                                                               lng:jsonObject[@"race"][@"lng"]];
+                            [self presentViewController:raceViewController
+                                               animated:YES
+                                             completion:^{
+                                                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                             }];
+                        }
+                        
+                    }
+                    else {
+                        DTRootViewController *raceViewController;
+                        raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+                        [self presentViewController:raceViewController
+                                           animated:YES
+                                         completion:^{
+                                             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                         }];
+                        
+                    }
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                }];
 }
 
 @end
