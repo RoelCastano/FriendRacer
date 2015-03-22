@@ -8,17 +8,23 @@
 
 #import "DTRaceViewController.h"
 #import "HKCustomPointAnnotation.h"
+#import "MHUser.h"
+#import "Session.h"
 #import <MapKit/MapKit.h>
 #import <Firebase/Firebase.h>
 
-#define kEavesdrop @"https://roady.firebaseio.com/races"
+#define kRoadyFirebase @"https://roady.firebaseio.com/races"
 
 
 @interface DTRaceViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, MKAnnotation>
 @property (weak, nonatomic) IBOutlet MKMapView *raceMap;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
-@property (strong, nonatomic) NSMutableArray *mapAnnotations;
+@property (strong, nonatomic) NSMutableDictionary *mapAnnotations;
+@property (strong, nonatomic) Firebase *roadyFirebase;
+@property (strong, nonatomic) NSString *firebaseUsersURL;
+@property (strong, nonatomic) Firebase *userFirebase;
+@property (strong, nonatomic) NSString *userFirebaseURL;
 @property (assign) BOOL firstTime;
 
 @end
@@ -28,14 +34,67 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // MAP CONFIGURATION
+    //INITIALIZATIONS
+    self.mapAnnotations = [[NSMutableDictionary alloc] init];
+    
+    [self setupMap];
+
+    [self setupFirebase];
+    
+}
+
+-(void)setupFirebase{
+    self.firebaseUsersURL = [NSString stringWithFormat:@"%@/%@/users", kRoadyFirebase, self.game.mapId];
+    NSLog(@"%@",self.firebaseUsersURL);
+    self.roadyFirebase = [[Firebase alloc] initWithUrl:self.firebaseUsersURL];
+    
+    
+    self.userFirebaseURL = [NSString stringWithFormat:@"%@/%@/users/%@", kRoadyFirebase, self.game.mapId, activeSession.currentUser.userId];
+    NSLog(@"%@",self.userFirebaseURL);
+    self.userFirebase = [[Firebase alloc] initWithUrl:self.userFirebaseURL];
+    
+    [self.userFirebase updateChildValues:@{
+                                           @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
+                                           @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude]
+                                           }];
+
+    [self.roadyFirebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"------------------CHILD ADDED------------------");
+        HKCustomPointAnnotation *point = [[HKCustomPointAnnotation alloc] init];
+        NSString *lat = snapshot.value[@"lat"];
+        NSString *lng = snapshot.value[@"lng"];
+        point.userID = snapshot.key;
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
+        [point setCoordinate:coordinates];
+        [self.raceMap addAnnotation:point];
+        [self.mapAnnotations setObject:point forKey:snapshot.key];
+        NSLog(@"The updated location key is %@", snapshot.key);
+        
+    }];
+
+    [self.roadyFirebase observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        HKCustomPointAnnotation *point = [self.mapAnnotations objectForKey:snapshot.key];
+        point.userID = snapshot.key;
+        [self.raceMap removeAnnotation:point];
+        NSString *lat = snapshot.value[@"lat"];
+        NSString *lng = snapshot.value[@"lng"];
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
+        [point setCoordinate:coordinates];
+        [self.raceMap addAnnotation:point];
+        NSLog(@"The updated location key is %@", snapshot.key);
+    }];
+
+}
+
+-(void)setupMap{
+    
     [self.raceMap setDelegate:self];
     self.locationManager = [[CLLocationManager alloc] init];
     
     self.locationManager.delegate = self;
     // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
     [self.locationManager requestAlwaysAuthorization];
-
+    
     self.firstTime = YES;
     
     MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude), MKCoordinateSpanMake(.05f, .05f));
@@ -44,7 +103,6 @@
     [self.locationManager startUpdatingLocation];
     self.raceMap.showsUserLocation = YES;
 
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,6 +117,11 @@
         [self.raceMap setRegion:region animated:NO];
         self.firstTime = NO;
     }
+    
+    [self.userFirebase updateChildValues:@{
+                                          @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
+                                          @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude]
+                                          }];
 }
 
 - (IBAction)currentLocationButtonPressed:(id)sender {
@@ -87,8 +150,10 @@
         {
             // If an existing pin view was not available, create one.
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
-            pinView.canShowCallout = YES;
-            pinView.image = [UIImage imageNamed:@"schools_maps"];
+            pinView.canShowCallout = NO;
+            pinView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", ((HKCustomPointAnnotation*)annotation).userID]]]];
+            [pinView.layer setCornerRadius:pinView.frame.size.width/2];
+            [pinView setClipsToBounds:YES];
             //HKCustomButton* rightButton = [HKCustomButton buttonWithType:UIButtonTypeDetailDisclosure];
             //rightButton.event = ((HKCustomPointAnnotation*)annotation).event;
             //[rightButton addTarget:self action:@selector(eventButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -102,6 +167,7 @@
     return nil;
 }
 
+/*
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
     MKAnnotationView *aV;
@@ -117,12 +183,12 @@
         [UIView commitAnimations];
         
     }
-}
+}*/
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     
-    view.canShowCallout = YES;
+    view.canShowCallout = NO;
 }
 
 - (void)setUsers:(NSArray *)users{
