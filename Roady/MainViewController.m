@@ -26,6 +26,15 @@
     self.feedTableView.dataSource = self;
     
     [self loadFeed];
+    
+    UIImage *logoImage = [UIImage imageNamed:@"logo-navbar"];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 55.0f, 35.0f)];
+    
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [imageView setImage:logoImage];
+    
+    self.navigationItem.titleView = imageView;
     // Do any additional setup after loading the view.
 }
 
