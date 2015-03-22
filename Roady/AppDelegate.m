@@ -36,10 +36,41 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
-    // Extract the notification data
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
-    
-    
+    if (notificationPayload) {
+        NSDictionary *userInfo = notificationPayload;
+        if ([userInfo[@"type"] isEqualToString:@"invitation"]) {
+            DTInvitationPopupViewController *popupController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"invitationPopup"];
+            popupController.adminName = userInfo[@"admin"];
+            popupController.adminUid = userInfo[@"admin_uid"];
+            popupController.placeName = userInfo[@"race_name"];
+            popupController.game = [[DTRace alloc] initWithName:userInfo[@"race_name"]
+                                                          mapId:userInfo[@"race"][@"map_id"]
+                                                            lat:userInfo[@"race"][@"lat"]
+                                                            lng:userInfo[@"race"][@"lng"]];
+            
+            BKTBlurParameters *blurParameters = [BKTBlurParameters new];
+            blurParameters.alpha = 1.0f;
+            blurParameters.radius = 8.0f;
+            blurParameters.tintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
+            
+            [popupController setBlurParameters:blurParameters];
+            [popupController setPreferedPopinContentSize:CGSizeMake(280, 300)];
+            [popupController setPopinTransitionDirection:BKTPopinTransitionDirectionTop];
+            [popupController setPopinAlignment:BKTPopinAlignementOptionCentered];
+            [popupController setPopinOptions:BKTPopinDisableAutoDismiss];
+            UIViewController *viewcontroller;
+            
+            if ([self.window.rootViewController.presentedViewController isKindOfClass:[DTRootViewController class]]) {
+                viewcontroller = ((DTRootViewController *)self.window.rootViewController.presentedViewController).contentViewController;
+            }
+            else {
+                viewcontroller = self.window.rootViewController.presentedViewController;
+            }
+            popupController.presenter = viewcontroller;
+            [viewcontroller presentPopinController:popupController animated:YES completion:nil];
+        }
+    }
     
     return YES;
 }

@@ -45,24 +45,23 @@
     [httpClient postPath:@"api/users/accept_race"
               parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                     [self dismissCurrentPopinControllerAnimated:YES completion:^{
-                         NSError *error;
-                         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-                         DTRaceViewController *raceViewController;
-                         raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
-                         raceViewController.users = [NSArray arrayWithArray:jsonObject[@"race"][@"users"]];
-                         
-                         raceViewController.game = [[DTRace alloc] initWithName:jsonObject[@"race"][@"name"]
-                                                                          mapId:jsonObject[@"race"][@"map_id"]
-                                                                            lat:jsonObject[@"race"][@"lat"]
-                                                                            lng:jsonObject[@"race"][@"lng"]];
-                         [MBProgressHUD showHUDAddedTo:raceViewController.view animated:YES];
-                         [self presentViewController:raceViewController
-                                            animated:YES
-                                          completion:^{
-                                              [MBProgressHUD hideAllHUDsForView:raceViewController.view animated:YES];
-                                          }];
-                     }];
+                     NSError *error;
+                     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+                     DTRaceViewController *raceViewController;
+                     raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
+                     raceViewController.users = [NSArray arrayWithArray:jsonObject[@"race"][@"users"]];
+                     
+                     raceViewController.game = [[DTRace alloc] initWithName:jsonObject[@"race"][@"name"]
+                                                                      mapId:jsonObject[@"race"][@"map_id"]
+                                                                        lat:jsonObject[@"race"][@"lat"]
+                                                                        lng:jsonObject[@"race"][@"lng"]];
+                     
+                     [MBProgressHUD showHUDAddedTo:raceViewController.view animated:YES];
+                     [self presentViewController:raceViewController
+                                        animated:YES
+                                      completion:^{
+                                          [MBProgressHUD hideAllHUDsForView:raceViewController.view animated:YES];
+                                      }];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      [self dismissCurrentPopinControllerAnimated:YES completion:^{
