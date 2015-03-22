@@ -125,6 +125,14 @@
     view.canShowCallout = YES;
 }
 
+- (void)setUsers:(NSArray *)users{
+    _users = users;
+}
+
+-(void)setGame:(DTRace *)game {
+    _game = game;
+}
+
 /*
 #pragma mark - Navigation
 

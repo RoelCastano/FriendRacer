@@ -65,25 +65,33 @@
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      NSError *error;
                      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-                     UIViewController *viewController;
                      if (jsonObject) {
                          //parse json object to game object
-                         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
-                         ((DTRaceViewController *)viewController).game = [[DTRace alloc] initWithName:jsonObject[@"name"]
+                         DTRaceViewController *raceViewController;
+                         raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
+                         raceViewController.users = [NSArray arrayWithArray:jsonObject[@"users"]];
+
+                         raceViewController.game = [[DTRace alloc] initWithName:jsonObject[@"name"]
                                                                                                 mapId:jsonObject[@"map_id"]
                                                                                                   lat:jsonObject[@"lat"]
                                                                                                   lng:jsonObject[@"lng"]];
-                         
-                         ((DTRaceViewController *)viewController).users = [NSArray arrayWithArray:jsonObject[@"users"]];
+                         [self presentViewController:raceViewController
+                                            animated:YES
+                                          completion:^{
+                                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                          }];
+
                      }
                      else {
-                         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+                         DTRootViewController *raceViewController;
+                         raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+                         [self presentViewController:raceViewController
+                                            animated:YES
+                                          completion:^{
+                                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                          }];
+
                      }
-                     [self presentViewController:viewController
-                                        animated:YES
-                                      completion:^{
-                                          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                      }];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      NSLog(@"Error: %@", error);

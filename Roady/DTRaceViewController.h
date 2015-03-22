@@ -12,6 +12,10 @@
 #import "DTRace.h"
 
 @interface DTRaceViewController : UIViewController
-@property DTRace *game;
-@property NSArray *users;
+@property (nonatomic, strong) DTRace *game;
+@property (nonatomic, strong) NSArray *users;
+
+- (void)setGame:(DTRace *)game;
+- (void)setUsers:(NSArray *)users;
+
 @end
