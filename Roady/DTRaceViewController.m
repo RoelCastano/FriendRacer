@@ -12,6 +12,11 @@
 #import "Session.h"
 #import <MapKit/MapKit.h>
 #import <Firebase/Firebase.h>
+#import <RestKit/Restkit.h>
+#import "HMApiClient.h"
+#import "DTRootViewController.h"
+#import "DTCurrentRaceFriendCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define kRoadyFirebase @"https://roady.firebaseio.com/races"
 
@@ -26,7 +31,7 @@
 @property (strong, nonatomic) Firebase *userFirebase;
 @property (strong, nonatomic) NSString *userFirebaseURL;
 @property (assign) BOOL firstTime;
-
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @end
 
 @implementation DTRaceViewController
@@ -38,9 +43,12 @@
     self.mapAnnotations = [[NSMutableDictionary alloc] init];
     
     [self setupMap];
-
+    
     [self setupFirebase];
     
+    self.nameLabel.text = self.game.name;
+    self.friendsTableView.delegate = self;
+    self.friendsTableView.dataSource = self;
 }
 
 -(void)setupFirebase{
@@ -57,7 +65,7 @@
                                            @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
                                            @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude]
                                            }];
-
+    
     [self.roadyFirebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"------------------CHILD ADDED------------------");
         HKCustomPointAnnotation *point = [[HKCustomPointAnnotation alloc] init];
@@ -71,7 +79,7 @@
         NSLog(@"The updated location key is %@", snapshot.key);
         
     }];
-
+    
     [self.roadyFirebase observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
         HKCustomPointAnnotation *point = [self.mapAnnotations objectForKey:snapshot.key];
         point.userID = snapshot.key;
@@ -83,7 +91,7 @@
         [self.raceMap addAnnotation:point];
         NSLog(@"The updated location key is %@", snapshot.key);
     }];
-
+    
 }
 
 -(void)setupMap{
@@ -102,7 +110,7 @@
     
     [self.locationManager startUpdatingLocation];
     self.raceMap.showsUserLocation = YES;
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,15 +127,15 @@
     }
     
     [self.userFirebase updateChildValues:@{
-                                          @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
-                                          @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude]
-                                          }];
+                                           @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
+                                           @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude]
+                                           }];
 }
 
 - (IBAction)currentLocationButtonPressed:(id)sender {
     MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude), MKCoordinateSpanMake(.009f, .009f));
     [self.raceMap setRegion:region animated:NO];
-
+    
 }
 
 #pragma mark - MAPS
@@ -168,22 +176,22 @@
 }
 
 /*
-
-- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
-    MKAnnotationView *aV;
-    for (aV in views) {
-        CGRect endFrame = aV.frame;
-        
-        aV.frame = CGRectMake(aV.frame.origin.x, aV.frame.origin.y - 230.0, aV.frame.size.width, aV.frame.size.height);
-        
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.45];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [aV setFrame:endFrame];
-        [UIView commitAnimations];
-        
-    }
-}*/
+ 
+ - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+ MKAnnotationView *aV;
+ for (aV in views) {
+ CGRect endFrame = aV.frame;
+ 
+ aV.frame = CGRectMake(aV.frame.origin.x, aV.frame.origin.y - 230.0, aV.frame.size.width, aV.frame.size.height);
+ 
+ [UIView beginAnimations:nil context:NULL];
+ [UIView setAnimationDuration:0.45];
+ [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+ [aV setFrame:endFrame];
+ [UIView commitAnimations];
+ 
+ }
+ }*/
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
@@ -198,15 +206,50 @@
 -(void)setGame:(DTRace *)game {
     _game = game;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)iWontGoClicked:(id)sender {
+    AFHTTPClient *httpClient = [HMApiClient sharedClient];
+    [httpClient postPath:@"api/races/exit_race"
+              parameters:nil
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     [self dismissViewControllerAnimated:YES completion:^{
+                         DTRootViewController *raceViewController;
+                         raceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+                         [self presentViewController:raceViewController
+                                            animated:YES
+                                          completion:^{
+                                          }];
+                     }];
+                 }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error on the request." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                     [alert show];
+                 }];
 }
-*/
+
+#pragma mark - TableView
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DTCurrentRaceFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendOnRaceCell"];
+    
+    if (!cell) {
+        cell = [[DTCurrentRaceFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOnRaceCell"];
+    }
+    
+    cell.nameLabel.text = @"Roel Cataño";
+    cell.distanceLabel.text = @"12 KM";
+    
+    [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", @"10206435959880648"]]];
+    
+    return cell;
+
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
 
 @end

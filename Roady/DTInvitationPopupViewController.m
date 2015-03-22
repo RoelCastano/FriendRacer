@@ -62,7 +62,7 @@
 - (IBAction)didClickedReject:(id)sender {
     [HMApiClient sharedClient];
     AFHTTPClient *httpClient = [HMApiClient sharedClient];
-    [httpClient postPath:@"api/users/exit_race"
+    [httpClient postPath:@"api/races/exit_race"
               parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      [self dismissCurrentPopinControllerAnimated:YES];
