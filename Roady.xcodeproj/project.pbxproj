@@ -18,7 +18,6 @@
 		23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B3B1ABE0D5100CAE57B /* AppDelegate.m */; };
 		23B71B3F1ABE0D5100CAE57B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B3E1ABE0D5100CAE57B /* ViewController.m */; };
 		23B71B421ABE0D5100CAE57B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B71B401ABE0D5100CAE57B /* Main.storyboard */; };
-		23B71B441ABE0D5100CAE57B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B71B431ABE0D5100CAE57B /* Images.xcassets */; };
 		23B71B471ABE0D5100CAE57B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B71B451ABE0D5100CAE57B /* LaunchScreen.xib */; };
 		23B71B531ABE0D5100CAE57B /* RoadyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B521ABE0D5100CAE57B /* RoadyTests.m */; };
 		23B71B661ABE145100CAE57B /* RoadyCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B71B651ABE145100CAE57B /* RoadyCore.m */; };
@@ -45,6 +44,8 @@
 		7D2A6EEB1ABED1CB002C5E52 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2A6EEA1ABED1CB002C5E52 /* SystemConfiguration.framework */; };
 		7D2A6EED1ABED1D7002C5E52 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2A6EEC1ABED1D7002C5E52 /* libz.dylib */; };
 		7D2A6EEF1ABED1E2002C5E52 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2A6EEE1ABED1E2002C5E52 /* libsqlite3.dylib */; };
+		7D2A6F0C1ABF36CE002C5E52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B71B431ABE0D5100CAE57B /* Images.xcassets */; };
+		7D2A6F0F1ABF3A22002C5E52 /* HKFinalPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2A6F0E1ABF3A22002C5E52 /* HKFinalPointAnnotation.m */; };
 		7DAE35AD1ABE6C9C006759BE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE35AC1ABE6C9C006759BE /* UIImage+ImageEffects.m */; };
 		7DAE35B01ABE6D73006759BE /* UIView+blurred.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE35AF1ABE6D73006759BE /* UIView+blurred.m */; };
 		7DAE35B31ABE86A6006759BE /* HKCustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE35B21ABE86A6006759BE /* HKCustomPointAnnotation.m */; };
@@ -125,6 +126,8 @@
 		7D2A6EEA1ABED1CB002C5E52 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7D2A6EEC1ABED1D7002C5E52 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7D2A6EEE1ABED1E2002C5E52 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		7D2A6F0D1ABF3A22002C5E52 /* HKFinalPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKFinalPointAnnotation.h; sourceTree = "<group>"; };
+		7D2A6F0E1ABF3A22002C5E52 /* HKFinalPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKFinalPointAnnotation.m; sourceTree = "<group>"; };
 		7DAE35AB1ABE6C9C006759BE /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		7DAE35AC1ABE6C9C006759BE /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		7DAE35AE1ABE6D73006759BE /* UIView+blurred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+blurred.h"; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				2349181F1ABED43E00BC88B7 /* DTCurrentRaceFriendCell.m */,
 				234918211ABEEA7F00BC88B7 /* DTFeedCell.h */,
 				234918221ABEEA7F00BC88B7 /* DTFeedCell.m */,
+				7D2A6F0D1ABF3A22002C5E52 /* HKFinalPointAnnotation.h */,
+				7D2A6F0E1ABF3A22002C5E52 /* HKFinalPointAnnotation.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -430,9 +435,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D2A6F0C1ABF36CE002C5E52 /* Images.xcassets in Resources */,
 				23B71B421ABE0D5100CAE57B /* Main.storyboard in Resources */,
 				23B71B471ABE0D5100CAE57B /* LaunchScreen.xib in Resources */,
-				23B71B441ABE0D5100CAE57B /* Images.xcassets in Resources */,
 				234918251ABF26C800BC88B7 /* logo.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +492,7 @@
 				234918201ABED43E00BC88B7 /* DTCurrentRaceFriendCell.m in Sources */,
 				7DAE35AD1ABE6C9C006759BE /* UIImage+ImageEffects.m in Sources */,
 				23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */,
+				7D2A6F0F1ABF3A22002C5E52 /* HKFinalPointAnnotation.m in Sources */,
 				23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */,
 				236C4C571ABE8D01006BA9F4 /* DTRace.m in Sources */,
 				23E1C58C1ABE33660084EEE7 /* Session.m in Sources */,
@@ -632,6 +638,7 @@
 			baseConfigurationReference = C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Roady/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -644,6 +651,7 @@
 			baseConfigurationReference = 6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Roady/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

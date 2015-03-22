@@ -8,6 +8,7 @@
 
 #import "DTRaceViewController.h"
 #import "HKCustomPointAnnotation.h"
+#import "HKFinalPointAnnotation.h"
 #import "MHUser.h"
 #import "Session.h"
 #import <MapKit/MapKit.h>
@@ -49,6 +50,11 @@
     [self setupMap];
     
     [self setupFirebase];
+    
+    HKFinalPointAnnotation *point = [[HKFinalPointAnnotation alloc] init];
+    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([self.game.lat doubleValue], [self.game.lng doubleValue]);
+    [point setCoordinate:coordinates];
+    [self.raceMap addAnnotation:point];
     
     self.nameLabel.text = self.game.name;
     self.friendsTableView.delegate = self;
@@ -142,7 +148,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     if (self.firstTime) {
-        MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude), MKCoordinateSpanMake(.009f, .009f));
+        MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude), MKCoordinateSpanMake(.036f, .036f));
         [self.raceMap setRegion:region animated:NO];
         self.firstTime = NO;
     }
@@ -165,7 +171,7 @@
 }
 
 - (IBAction)currentLocationButtonPressed:(id)sender {
-    MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude), MKCoordinateSpanMake(.009f, .009f));
+    MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude), MKCoordinateSpanMake(.036f, .036f));
     [self.raceMap setRegion:region animated:NO];
     
 }
@@ -178,8 +184,26 @@
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
-    if ([annotation isKindOfClass:[MKUserLocation class]])
-        return nil;
+    if ([annotation isKindOfClass:[HKFinalPointAnnotation class]]) {
+        MKAnnotationView *pinView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"NotCustomPinAnnotationView"];
+        if (!pinView)
+        {
+            // If an existing pin view was not available, create one.
+            pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"NotCustomPinAnnotationView"];
+            pinView.canShowCallout = NO;
+            pinView.image = [UIImage imageNamed:@"place-pin"];
+            [pinView setClipsToBounds:YES];
+            //HKCustomButton* rightButton = [HKCustomButton buttonWithType:UIButtonTypeDetailDisclosure];
+            //rightButton.event = ((HKCustomPointAnnotation*)annotation).event;
+            //[rightButton addTarget:self action:@selector(eventButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            //pinView.rightCalloutAccessoryView = rightButton;
+            // Add an image to the left callout.
+        } else {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+
+    }
     
     // Handle any custom annotations.
     if ([annotation isKindOfClass:[HKCustomPointAnnotation class]])
@@ -191,7 +215,12 @@
             // If an existing pin view was not available, create one.
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
             pinView.canShowCallout = NO;
-            pinView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", ((HKCustomPointAnnotation*)annotation).userID]]]];
+            UIImage *icon = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", ((HKCustomPointAnnotation*)annotation).userID]]]];
+            UIGraphicsBeginImageContext( CGSizeMake(30, 30));
+            [icon drawInRect:CGRectMake(0,0,30,30)];
+            UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            pinView.image = newImage;
             [pinView.layer setCornerRadius:pinView.frame.size.width/2];
             [pinView setClipsToBounds:YES];
             //HKCustomButton* rightButton = [HKCustomButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -279,6 +308,18 @@
     
     return cell;
     
+}
+- (IBAction)arriveButtonPressed:(id)sender {
+    AFHTTPClient *httpClient = [HMApiClient sharedClient];
+    [httpClient postPath:[NSString stringWithFormat:@"api/races/arrive"]
+              parameters:nil
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     NSLog(@"SUCCESS");
+                 }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     NSLog(@"Error: %@", error);
+                 }];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -41,6 +41,8 @@
     self.startRacingButton.enabled = [self shouldPermitStartRace];
     [self updateStartRaceView];
     self.selectedFriends = [[NSMutableArray alloc] init];
+    [self.venueWrapper.layer setBorderWidth:1.0f];
+    [self.venueWrapper.layer setBorderColor:[[UIColor whiteColor] CGColor]];
 }
 
 - (void)didReceiveMemoryWarning {
