@@ -30,10 +30,10 @@
 @property (strong, nonatomic) NSString *firebaseUsersURL;
 @property (strong, nonatomic) Firebase *userFirebase;
 @property (strong, nonatomic) NSString *userFirebaseURL;
-@property (strong, nonatomic) NSMutableDictionary* distances;
-@property (strong, nonatomic) NSMutableDictionary* friends;
+@property (strong, nonatomic) NSMutableArray* friends;
 @property (assign) BOOL firstTime;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property NSTimer *timer;
 
 @end
 
@@ -44,7 +44,7 @@
     
     //INITIALIZATIONS
     self.mapAnnotations = [[NSMutableDictionary alloc] init];
-    self.friends = [[NSMutableDictionary alloc] init];
+    self.friends = [[NSMutableArray alloc] init];
     
     [self setupMap];
     
@@ -53,8 +53,9 @@
     self.nameLabel.text = self.game.name;
     self.friendsTableView.delegate = self;
     self.friendsTableView.dataSource = self;
-    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(updateTable) userInfo:nil repeats:YES];
-
+    [self updateTable];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateTable) userInfo:nil repeats:YES];
+    
 }
 
 -(void) updateTable {
@@ -79,7 +80,8 @@
         
         NSString *lat = snapshot.value[@"lat"];
         NSString *lng = snapshot.value[@"lng"];
-        [self.friends setObject:snapshot.value forKey:snapshot.key];
+        
+        [self.friends addObject:@{snapshot.key : snapshot.value}];
         point.userID = snapshot.key;
         CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
         [point setCoordinate:coordinates];
@@ -92,12 +94,19 @@
     [self.roadyFirebase observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
         HKCustomPointAnnotation *point = [self.mapAnnotations objectForKey:snapshot.key];
         point.userID = snapshot.key;
-        [self.friends setObject:snapshot.value forKey:snapshot.key];
-
+        
+        NSMutableArray *keys = [[NSMutableArray alloc] init];
+        for (NSDictionary *friend in self.friends) {
+            [keys addObject:[[friend allKeys] objectAtIndex:0]];
+        }
+        NSInteger i =[keys indexOfObject:snapshot.key];
+        [self.friends removeObjectAtIndex:i];
+        [self.friends addObject:@{snapshot.key : snapshot.value}];
+        
         [self.raceMap removeAnnotation:point];
         NSString *lat = snapshot.value[@"lat"];
         NSString *lng = snapshot.value[@"lng"];
-
+        
         CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
         [point setCoordinate:coordinates];
         [self.raceMap addAnnotation:point];
@@ -145,12 +154,11 @@
     CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:[self.game.lat doubleValue] longitude:[self.game.lng doubleValue]];
     
     CLLocationDistance dist = [self.locationManager.location distanceFromLocation:loc2];
-    
     CLLocationSpeed speed = [self.locationManager.location speed];
     [self.userFirebase updateChildValues:@{
                                            @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
                                            @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude],
-                                           @"distance": [NSString stringWithFormat:@"%f", dist],
+                                           @"distance": [NSString stringWithFormat:@"%i m", (int)dist],
                                            @"speed": [NSNumber numberWithDouble:speed],
                                            @"name": activeSession.currentUser.name
                                            }];
@@ -199,24 +207,6 @@
     return nil;
 }
 
-/*
- 
- - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
- MKAnnotationView *aV;
- for (aV in views) {
- CGRect endFrame = aV.frame;
- 
- aV.frame = CGRectMake(aV.frame.origin.x, aV.frame.origin.y - 230.0, aV.frame.size.width, aV.frame.size.height);
- 
- [UIView beginAnimations:nil context:NULL];
- [UIView setAnimationDuration:0.45];
- [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
- [aV setFrame:endFrame];
- [UIView commitAnimations];
- 
- }
- }*/
-
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     
@@ -225,6 +215,14 @@
 
 - (void)setUsers:(NSArray *)users{
     _users = users;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.locationManager stopUpdatingLocation];
+    [self.userFirebase removeAllObservers];
+    [self.roadyFirebase removeAllObservers];
+    [self.timer invalidate];
 }
 
 -(void)setGame:(DTRace *)game {
@@ -256,20 +254,28 @@
         cell = [[DTCurrentRaceFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOnRaceCell"];
     }
     
-    NSDictionary *user = [[self.friends allValues] objectAtIndex:indexPath.row];
-    cell.nameLabel.text = user[@"name"];
+    NSDictionary *user = [self.friends objectAtIndex:indexPath.row];
+    NSArray *arr = [user allValues];
     
-    NSString *dist = user[@"distance"];
-    NSLog(@"Distance for %@: %@", user[@"name"], dist);
-    double dist2 = [dist doubleValue];
-    if (dist2 > 50.0) {
-        cell.distanceLabel.text = dist;
-    } else {
-        cell.distanceLabel.text = @"Arrived";
+    if ([arr[0][@"lat"] floatValue] != 0) {
+        cell.nameLabel.text = arr[0][@"name"];
+        NSString *dist = arr[0][@"distance"];
+        NSLog(@"Distance for %@: %@", user[@"name"], dist);
+        double dist2 = [dist doubleValue];
+        if (dist2 > 999) {
+            cell.distanceLabel.text = [NSString stringWithFormat:@"%f kms", dist2/1000];
+        } else if (dist2 > 50) {
+            cell.distanceLabel.text = [NSString stringWithFormat:@"%f mts", dist2];
+        } else {
+            cell.distanceLabel.text = @"Arrived";
+        }
+        [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", [[user allKeys] objectAtIndex:0]]]];
     }
-    
-    
-    [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", user[@"uid"]]]];
+    else {
+        cell.nameLabel.text = self.users[indexPath.row][@"name"];
+        cell.distanceLabel.text = @"Pending";
+        [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.users[indexPath.row][@"uid"]]]];
+    }
     
     return cell;
     

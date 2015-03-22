@@ -10,6 +10,7 @@
 		2349181D1ABEB76100BC88B7 /* DTInvitationPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2349181C1ABEB76100BC88B7 /* DTInvitationPopupViewController.m */; };
 		234918201ABED43E00BC88B7 /* DTCurrentRaceFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2349181F1ABED43E00BC88B7 /* DTCurrentRaceFriendCell.m */; };
 		234918231ABEEA7F00BC88B7 /* DTFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 234918221ABEEA7F00BC88B7 /* DTFeedCell.m */; };
+		234918251ABF26C800BC88B7 /* logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 234918241ABF26C800BC88B7 /* logo.svg */; };
 		236C4C501ABE70D5006BA9F4 /* DTFacebookFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */; };
 		236C4C541ABE89A5006BA9F4 /* CCMBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C531ABE89A5006BA9F4 /* CCMBorderView.m */; };
 		236C4C571ABE8D01006BA9F4 /* DTRace.m in Sources */ = {isa = PBXBuildFile; fileRef = 236C4C561ABE8D01006BA9F4 /* DTRace.m */; };
@@ -67,6 +68,7 @@
 		2349181F1ABED43E00BC88B7 /* DTCurrentRaceFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCurrentRaceFriendCell.m; sourceTree = "<group>"; };
 		234918211ABEEA7F00BC88B7 /* DTFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFeedCell.h; sourceTree = "<group>"; };
 		234918221ABEEA7F00BC88B7 /* DTFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFeedCell.m; sourceTree = "<group>"; };
+		234918241ABF26C800BC88B7 /* logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = logo.svg; sourceTree = "<group>"; };
 		236C4C4E1ABE70D5006BA9F4 /* DTFacebookFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFacebookFriendCell.h; sourceTree = "<group>"; };
 		236C4C4F1ABE70D5006BA9F4 /* DTFacebookFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTFacebookFriendCell.m; sourceTree = "<group>"; };
 		236C4C511ABE8987006BA9F4 /* CCMBorderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMBorderView.h; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		23B71B671ABE1B3300CAE57B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				234918241ABF26C800BC88B7 /* logo.svg */,
 				236C4C531ABE89A5006BA9F4 /* CCMBorderView.m */,
 				236C4C511ABE8987006BA9F4 /* CCMBorderView.h */,
 				23E1C57E1ABE24550084EEE7 /* PBFoursquareAPI.h */,
@@ -395,6 +398,7 @@
 				TargetAttributes = {
 					23B71B321ABE0D5100CAE57B = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = TAGM86AK24;
 					};
 					23B71B4B1ABE0D5100CAE57B = {
 						CreatedOnToolsVersion = 6.2;
@@ -429,6 +433,7 @@
 				23B71B421ABE0D5100CAE57B /* Main.storyboard in Resources */,
 				23B71B471ABE0D5100CAE57B /* LaunchScreen.xib in Resources */,
 				23B71B441ABE0D5100CAE57B /* Images.xcassets in Resources */,
+				234918251ABF26C800BC88B7 /* logo.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +632,7 @@
 			baseConfigurationReference = C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Roady/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -638,6 +644,7 @@
 			baseConfigurationReference = 6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Roady/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

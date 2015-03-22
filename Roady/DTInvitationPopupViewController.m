@@ -25,15 +25,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.participantsView.layer.cornerRadius = 25.0f;
+    self.participantsView.layer.cornerRadius = self.participantsView.frame.size.height/2;
     self.participantsView.layer.masksToBounds = YES;
     self.adminNameLabel.text = self.adminName;
     self.placeLabel.text = self.placeName;
     self.containerView.layer.cornerRadius = 8.0f;
     self.containerView.layer.masksToBounds = YES;
-    self.inviteeImage.layer.cornerRadius = self.inviteeImage.frame.size.width/2;
+    self.inviteeImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.adminUid]]]];
+    self.inviteeImage.layer.cornerRadius = self.inviteeImage.frame.size.height/2;
     [self.inviteeImage.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    [self.inviteeImage.layer setBorderWidth:2.0f];
+    [self.inviteeImage setClipsToBounds:YES];
+    [self.inviteeImage.layer setBorderWidth:1.0f];
+    
 }
 
 - (IBAction)didClickedAccpet:(id)sender {
@@ -75,7 +78,7 @@
     [httpClient postPath:@"api/races/exit_race"
               parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                     [self dismissCurrentPopinControllerAnimated:YES];
+                     [self.presenter dismissCurrentPopinControllerAnimated:YES];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      [self dismissCurrentPopinControllerAnimated:YES completion:^{
