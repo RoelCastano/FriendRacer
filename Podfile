@@ -11,6 +11,7 @@ target 'Roady' do
     pod 'Firebase', '~> 2.2'
     pod 'MBProgressHUD'
     pod 'SDWebImage'
+    pod 'MaryPopin'
 end
 
 target 'RoadyTests' do
