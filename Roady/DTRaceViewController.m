@@ -17,6 +17,7 @@
 #import "DTRootViewController.h"
 #import "DTCurrentRaceFriendCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #define kRoadyFirebase @"https://roady.firebaseio.com/races"
 
@@ -43,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //INITIALIZATIONS
     self.mapAnnotations = [[NSMutableDictionary alloc] init];
     self.friends = [[NSMutableArray alloc] init];
@@ -57,7 +59,7 @@
     self.friendsTableView.dataSource = self;
     [self updateTable];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateTable) userInfo:nil repeats:YES];
-    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 -(void) updateTable {
