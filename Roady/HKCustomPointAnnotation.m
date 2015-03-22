@@ -10,4 +10,8 @@
 
 @implementation HKCustomPointAnnotation
 
+- (void)setUserID:(NSString *)userID{
+    _userID = userID;
+}
+
 @end

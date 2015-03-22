@@ -10,5 +10,6 @@
 
 @interface HKCustomPointAnnotation : MKPointAnnotation
 
+@property (strong, nonatomic) NSString *userID;
 
 @end
