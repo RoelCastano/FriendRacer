@@ -241,7 +241,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l06-QI-BiY" customClass="CCMBorderView">
                                 <rect key="frame" x="160" y="64" width="160" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aN-O9-Q5k">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aN-O9-Q5k">
                                         <rect key="frame" x="1" y="0.0" width="158" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <state key="normal" title="Leaderboard">
@@ -252,6 +252,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.16078431369999999" green="0.69019607839999997" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="2aN-O9-Q5k" firstAttribute="top" secondItem="l06-QI-BiY" secondAttribute="top" id="Hp1-N8-haU"/>
+                                    <constraint firstItem="2aN-O9-Q5k" firstAttribute="leading" secondItem="l06-QI-BiY" secondAttribute="leading" constant="1" id="RYd-Ov-hG8"/>
+                                    <constraint firstAttribute="height" secondItem="2aN-O9-Q5k" secondAttribute="height" id="d3Q-Np-bYg"/>
+                                    <constraint firstAttribute="width" secondItem="2aN-O9-Q5k" secondAttribute="width" id="uBO-QV-XIp"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="borderBottom" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
