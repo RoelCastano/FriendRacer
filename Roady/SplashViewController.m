@@ -48,9 +48,9 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     
-    activeSession.currentUser.authToken = [FBSession activeSession].accessTokenData.accessToken;
-    activeSession.currentUser.name = user.name;
-    self.profilePictureView.profileID = user.objectID;
+    MHUser *currentUser = [[MHUser alloc] initWithName:user.name authToken:[FBSession activeSession].accessTokenData.accessToken andId:user.objectID];
+    [Session newSessionForUser:currentUser];
+    self.profilePictureView.profileID = activeSession.currentUser.userId;
     self.nameLabel.text = activeSession.currentUser.name;
 }
 

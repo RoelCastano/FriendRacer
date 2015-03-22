@@ -10,4 +10,18 @@
 
 @implementation MHUser
 
+- (id)initWithName:(NSString*)name authToken:(NSString*)auth andId:(NSString*)uid
+{
+    self = [super init];
+    if (self)
+    {
+        // superclass successfully initialized, further
+        // initialization happens here ...
+        self.name = name;
+        self.authToken = auth;
+        self.userId= uid;
+    }
+    return self;
+}
+
 @end
