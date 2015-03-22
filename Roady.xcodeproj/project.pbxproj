@@ -29,6 +29,9 @@
 		23E1C59F1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C59E1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m */; };
 		23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */; };
 		3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 239237A7A195373C025E7B8D /* libPods-Roady.a */; };
+		7DAE35AD1ABE6C9C006759BE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE35AC1ABE6C9C006759BE /* UIImage+ImageEffects.m */; };
+		7DAE35B01ABE6D73006759BE /* UIView+blurred.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE35AF1ABE6D73006759BE /* UIView+blurred.m */; };
+		7DC21E071ABE5CE500DF3F8C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC21E061ABE5CE500DF3F8C /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,11 @@
 		23E1C5A01ABE58ED0084EEE7 /* DTRaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTRaceViewController.h; sourceTree = "<group>"; };
 		23E1C5A11ABE58ED0084EEE7 /* DTRaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTRaceViewController.m; sourceTree = "<group>"; };
 		6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.release.xcconfig"; sourceTree = "<group>"; };
+		7DAE35AB1ABE6C9C006759BE /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		7DAE35AC1ABE6C9C006759BE /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		7DAE35AE1ABE6D73006759BE /* UIView+blurred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+blurred.h"; sourceTree = "<group>"; };
+		7DAE35AF1ABE6D73006759BE /* UIView+blurred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+blurred.m"; sourceTree = "<group>"; };
+		7DC21E061ABE5CE500DF3F8C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roady.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roady/Pods-Roady.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DC21E071ABE5CE500DF3F8C /* MapKit.framework in Frameworks */,
 				23E1C5851ABE2A100084EEE7 /* CoreLocation.framework in Frameworks */,
 				23E1C57D1ABE1DF00084EEE7 /* MobileCoreServices.framework in Frameworks */,
 				3BFE5743FC890AE917650253 /* libPods-Roady.a in Frameworks */,
@@ -130,6 +139,7 @@
 		23B71B351ABE0D5100CAE57B /* Roady */ = {
 			isa = PBXGroup;
 			children = (
+				7DAE35AA1ABE6C6E006759BE /* Views */,
 				23E1C58D1ABE337D0084EEE7 /* Models */,
 				23E1C5861ABE33400084EEE7 /* Controllers */,
 				23B71B671ABE1B3300CAE57B /* Vendor */,
@@ -224,9 +234,21 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		7DAE35AA1ABE6C6E006759BE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7DAE35AB1ABE6C9C006759BE /* UIImage+ImageEffects.h */,
+				7DAE35AC1ABE6C9C006759BE /* UIImage+ImageEffects.m */,
+				7DAE35AE1ABE6D73006759BE /* UIView+blurred.h */,
+				7DAE35AF1ABE6D73006759BE /* UIView+blurred.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		C12B41C51BB747E31DEB7D43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7DC21E061ABE5CE500DF3F8C /* MapKit.framework */,
 				23E1C5841ABE2A100084EEE7 /* CoreLocation.framework */,
 				23E1C57C1ABE1DF00084EEE7 /* MobileCoreServices.framework */,
 				239237A7A195373C025E7B8D /* libPods-Roady.a */,
@@ -378,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DAE35AD1ABE6C9C006759BE /* UIImage+ImageEffects.m in Sources */,
 				23E1C5931ABE338B0084EEE7 /* HMApiClient.m in Sources */,
 				23E1C5A21ABE58ED0084EEE7 /* DTRaceViewController.m in Sources */,
 				23E1C58C1ABE33660084EEE7 /* Session.m in Sources */,
@@ -386,6 +409,7 @@
 				23E1C59F1ABE583A0084EEE7 /* DTSearchPlaceModalViewController.m in Sources */,
 				23E1C59C1ABE57D90084EEE7 /* DTNewRaceViewController.m in Sources */,
 				23E1C5891ABE334C0084EEE7 /* SplashViewController.m in Sources */,
+				7DAE35B01ABE6D73006759BE /* UIView+blurred.m in Sources */,
 				23E1C5801ABE24550084EEE7 /* PBFoursquareAPI.m in Sources */,
 				23B71B3C1ABE0D5100CAE57B /* AppDelegate.m in Sources */,
 				23E1C5991ABE545A0084EEE7 /* MainViewController.m in Sources */,
@@ -516,7 +540,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Roady/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -528,7 +551,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Roady/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

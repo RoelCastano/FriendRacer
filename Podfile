@@ -8,6 +8,7 @@ target 'Roady' do
     pod 'AMSlideMenu', '~> 1.5.4'
     pod 'RestKit', '~> 0.20.0'
     pod 'REFrostedViewController', '~> 2.4.7'
+    pod 'Firebase', '~> 2.2'
 end
 
 target 'RoadyTests' do

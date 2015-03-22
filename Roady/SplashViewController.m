@@ -16,8 +16,6 @@
 
 @interface SplashViewController () <PBFoursquareAPIDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
-@property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property CLLocationManager *locationManager;
 @end
 
@@ -62,7 +60,7 @@
     MHUser *currentUser = [[MHUser alloc] initWithName:user.name authToken:[FBSession activeSession].accessTokenData.accessToken andId:user.objectID];
     [Session newSessionForUser:currentUser];
     
-    DTRootViewController *rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"root"];
+    DTRootViewController *rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"raceController"];
     [self presentViewController:rootViewController
                        animated:YES
                      completion:nil];

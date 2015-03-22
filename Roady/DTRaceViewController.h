@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIView+blurred.h"
+#import "UIImage+ImageEffects.h"
 
 @interface DTRaceViewController : UIViewController
 
