@@ -59,9 +59,10 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
-    if (userInfo[@"type"] == @"invitation") {
+    if ([userInfo[@"type"] isEqualToString:@"invitation"]) {
         DTInvitationPopupViewController *popupController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"invitationPopup"];
         popupController.adminName = userInfo[@"admin"];
+        popupController.adminUid = userInfo[@"admin_uid"];
         popupController.placeName = userInfo[@"race_name"];
         popupController.game = [[DTRace alloc] initWithName:userInfo[@"race_name"]
                                                       mapId:userInfo[@"race"][@"map_id"]
@@ -96,7 +97,7 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    // Use this method to pause ongoing tasks, disable timers, and  throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{

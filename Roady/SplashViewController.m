@@ -84,6 +84,7 @@
                                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                                                  DTInvitationPopupViewController *popupController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"invitationPopup"];
                                                  popupController.adminName = jsonObject[@"race"][@"admin_name"];
+                                                 popupController.adminUid = jsonObject[@"admin_uid"];
                                                  popupController.placeName = jsonObject[@"race"][@"name"];
                                                  popupController.game = [[DTRace alloc] initWithName:jsonObject[@"race"][@"name"]
                                                                                                mapId:jsonObject[@"race"][@"map_id"]

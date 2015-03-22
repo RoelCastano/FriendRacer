@@ -13,6 +13,8 @@ target 'Roady' do
     pod 'SDWebImage'
     pod 'MaryPopin'
     pod 'Parse', '~> 1.6'
+    pod 'CBZSplashView'
+    pod 'PocketSVG'
 end
 
 target 'RoadyTests' do

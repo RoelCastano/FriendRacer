@@ -12,6 +12,7 @@
 @interface DTInvitationPopupViewController : UIViewController
 @property NSString *adminName;
 @property NSString *placeName;
+@property NSString *adminUid;
 @property DTRace *game;
 @property UIViewController *presenter;
 @end
