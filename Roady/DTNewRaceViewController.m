@@ -178,7 +178,6 @@
                                           @"lng" : self.selectedVenue.lng,
                                           @"members" : membersArray
                                      }};
-    [HMApiClient sharedClient];
     AFHTTPClient *httpClient = [HMApiClient sharedClient];
     [httpClient postPath:[NSString stringWithFormat:@"api/races"]
               parameters:params
