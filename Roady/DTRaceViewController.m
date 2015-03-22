@@ -131,10 +131,13 @@
     
     CLLocationDistance dist = [self.locationManager.location distanceFromLocation:loc2];
     
+    
+    CLLocationSpeed speed = [self.locationManager.location speed];
     [self.userFirebase updateChildValues:@{
                                            @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
                                            @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude],
-                                           @"distance": [NSNumber numberWithDouble:dist]
+                                           @"distance": [NSNumber numberWithDouble:dist],
+                                           @"speed": [NSNumber numberWithDouble:speed]
                                            }];
 }
 
