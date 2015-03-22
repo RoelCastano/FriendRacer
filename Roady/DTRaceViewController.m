@@ -61,10 +61,7 @@
     NSLog(@"%@",self.userFirebaseURL);
     self.userFirebase = [[Firebase alloc] initWithUrl:self.userFirebaseURL];
     
-    [self.userFirebase updateChildValues:@{
-                                           @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
-                                           @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude]
-                                           }];
+    [self updateUserLoc];
     
     [self.roadyFirebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"------------------CHILD ADDED------------------");
@@ -126,9 +123,18 @@
         self.firstTime = NO;
     }
     
+    [self updateUserLoc];
+}
+
+-(void)updateUserLoc{
+    CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:[self.game.lat doubleValue] longitude:[self.game.lng doubleValue]];
+    
+    CLLocationDistance dist = [self.locationManager.location distanceFromLocation:loc2];
+    
     [self.userFirebase updateChildValues:@{
                                            @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
-                                           @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude]
+                                           @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude],
+                                           @"distance": [NSNumber numberWithDouble:dist]
                                            }];
 }
 
