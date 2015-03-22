@@ -31,6 +31,7 @@
 @property (strong, nonatomic) Firebase *userFirebase;
 @property (strong, nonatomic) NSString *userFirebaseURL;
 @property (strong, nonatomic) NSMutableArray* friends;
+@property (strong, nonatomic) NSMutableArray* sortedFriends;
 @property (assign) BOOL firstTime;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property NSTimer *timer;
@@ -45,6 +46,7 @@
     //INITIALIZATIONS
     self.mapAnnotations = [[NSMutableDictionary alloc] init];
     self.friends = [[NSMutableArray alloc] init];
+    self.sortedFriends = [[NSMutableArray alloc] init];
     
     [self setupMap];
     
@@ -54,12 +56,39 @@
     self.friendsTableView.delegate = self;
     self.friendsTableView.dataSource = self;
     [self updateTable];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateTable) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateTable) userInfo:nil repeats:YES];
     
 }
 
 -(void) updateTable {
     NSLog(@"UPDATE TABLE BABYYYYY");
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (int k = 0; k<self.friends.count; k++){
+        NSDictionary *user = self.friends[k];
+        NSArray *arr = [user allValues];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        if ([arr[0][@"lat"] floatValue] != 0) {
+            [dic setObject:arr[0][@"name"] forKeyedSubscript:@"name"];
+            NSString *dist = arr[0][@"distance"];
+            int dist2 = [dist intValue];
+            if (dist2 > 50) {
+                [dic setObject:dist forKeyedSubscript:@"distance"];
+            } else {
+                [dic setObject:@"0" forKeyedSubscript:@"distance"];
+            }
+            [dic setObject:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", [[user allKeys] objectAtIndex:0]] ] forKeyedSubscript:@"image"];
+        }
+        else {
+            [dic setObject:self.users[k][@"name"] forKeyedSubscript:@"name"];
+            [dic setObject:@"-1" forKeyedSubscript:@"distance"];
+            [dic setObject:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.users[k][@"uid"]]] forKey:@"image"];
+        }
+        [result addObject:dic];
+    }
+    NSSortDescriptor *brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
+    
+    self.sortedFriends = [result sortedArrayUsingDescriptors:sortDescriptors];
     [self.friendsTableView reloadData];
 }
 
@@ -158,7 +187,7 @@
     [self.userFirebase updateChildValues:@{
                                            @"lat": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.latitude],
                                            @"lng": [NSString stringWithFormat:@"%f", self.locationManager.location.coordinate.longitude],
-                                           @"distance": [NSString stringWithFormat:@"%i m", (int)dist],
+                                           @"distance": [NSString stringWithFormat:@"%i", (int)dist],
                                            @"speed": [NSNumber numberWithDouble:speed],
                                            @"name": activeSession.currentUser.name
                                            }];
@@ -254,29 +283,21 @@
         cell = [[DTCurrentRaceFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOnRaceCell"];
     }
     
-    NSDictionary *user = [self.friends objectAtIndex:indexPath.row];
-    NSArray *arr = [user allValues];
+    cell.nameLabel.text = self.sortedFriends[indexPath.row][@"name"];
     
-    if ([arr[0][@"lat"] floatValue] != 0) {
-        cell.nameLabel.text = arr[0][@"name"];
-        NSString *dist = arr[0][@"distance"];
-        NSLog(@"Distance for %@: %@", user[@"name"], dist);
-        double dist2 = [dist doubleValue];
-        if (dist2 > 999) {
-            cell.distanceLabel.text = [NSString stringWithFormat:@"%f kms", dist2/1000];
-        } else if (dist2 > 50) {
-            cell.distanceLabel.text = [NSString stringWithFormat:@"%f mts", dist2];
-        } else {
-            cell.distanceLabel.text = @"Arrived";
-        }
-        [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", [[user allKeys] objectAtIndex:0]]]];
+    int r = ([self.sortedFriends[indexPath.row][@"distance"] intValue]);
+    if (r> 999 && r > 0) {
+        cell.distanceLabel.text = [NSString stringWithFormat:@"%i kms", r/1000];
+    } else if (r > 50) {
+        cell.distanceLabel.text = [NSString stringWithFormat:@"%i mts", r];
+    } else if (r == -1){
+        cell.distanceLabel.text = @"Pending";
     }
     else {
-        cell.nameLabel.text = self.users[indexPath.row][@"name"];
-        cell.distanceLabel.text = @"Pending";
-        [cell.profilePicture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", self.users[indexPath.row][@"uid"]]]];
+        cell.distanceLabel.text = @"Arrived";
     }
     
+    [cell.profilePicture sd_setImageWithURL:self.sortedFriends[indexPath.row][@"image"]];
     return cell;
     
 }

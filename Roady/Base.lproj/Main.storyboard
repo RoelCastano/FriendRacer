@@ -128,7 +128,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DU3-us-9Nz">
-                                <rect key="frame" x="0.0" y="43" width="274.5" height="157"/>
+                                <rect key="frame" x="0.0" y="43" width="275" height="157"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-A0-wys">
                                         <rect key="frame" x="67" y="84" width="140" height="25"/>
