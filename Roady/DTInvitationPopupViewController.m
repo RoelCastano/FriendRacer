@@ -65,7 +65,7 @@
     [httpClient postPath:@"api/races/exit_race"
               parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                     [self dismissCurrentPopinControllerAnimated:YES];
+                     [self.presenter dismissCurrentPopinControllerAnimated:YES];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      [self dismissCurrentPopinControllerAnimated:YES completion:^{

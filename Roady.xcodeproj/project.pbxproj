@@ -395,6 +395,7 @@
 				TargetAttributes = {
 					23B71B321ABE0D5100CAE57B = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = TAGM86AK24;
 					};
 					23B71B4B1ABE0D5100CAE57B = {
 						CreatedOnToolsVersion = 6.2;
@@ -627,6 +628,7 @@
 			baseConfigurationReference = C10EE3E0EBED505AB801F534 /* Pods-Roady.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Roady/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -638,6 +640,7 @@
 			baseConfigurationReference = 6D46611421C5DDC2DD5DB4B0 /* Pods-Roady.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Roady/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

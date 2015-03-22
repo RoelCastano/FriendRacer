@@ -100,6 +100,7 @@
                                                  [popupController setPopinTransitionDirection:BKTPopinTransitionDirectionTop];
                                                  [popupController setPopinAlignment:BKTPopinAlignementOptionCentered];
                                                  [popupController setPopinOptions:BKTPopinDisableAutoDismiss];
+                                                 popupController.presenter = raceViewController;
                                                  [raceViewController presentPopinController:popupController animated:YES completion:nil];
                                              }];
                         }

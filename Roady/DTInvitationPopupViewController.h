@@ -13,4 +13,5 @@
 @property NSString *adminName;
 @property NSString *placeName;
 @property DTRace *game;
+@property UIViewController *presenter;
 @end

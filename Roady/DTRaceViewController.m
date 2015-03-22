@@ -213,6 +213,11 @@
     _users = users;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.locationManager stopUpdatingLocation];
+}
+
 -(void)setGame:(DTRace *)game {
     _game = game;
 }
