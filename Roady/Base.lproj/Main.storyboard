@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -229,11 +230,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cos-t1-QmX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="cos-t1-QmX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                <color key="backgroundColor" red="0.75294117647058822" green="0.0" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cos-t1-QmX" secondAttribute="height" multiplier="16:9" id="vgA-mJ-4gy"/>
+                                </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="d7A-aq-JBs">
-                                <rect key="frame" x="0.0" y="240" width="320" height="254"/>
+                            <view alpha="0.65000000000000013" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKV-3h-RHB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                <color key="backgroundColor" red="0.19607843137254902" green="0.66274509803921566" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="d7A-aq-JBs">
+                                <rect key="frame" x="0.0" y="217" width="320" height="277"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="facebookFriend" rowHeight="65" id="50s-qI-bMM" customClass="DTFacebookFriendCell">
@@ -243,7 +252,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-WZ-YQl" customClass="CCMBorderView">
-                                                    <rect key="frame" x="24" y="13" width="40" height="40"/>
+                                                    <rect key="frame" x="35" y="13" width="40" height="40"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Vc-S0-WWM">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -256,9 +265,9 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSR-Xr-16X">
-                                                    <rect key="frame" x="82" y="14" width="173" height="39"/>
+                                                    <rect key="frame" x="93" y="14" width="176" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.15686274509803921" green="0.67450980392156867" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -271,13 +280,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t9Z-F0-QLE" customClass="CCMBorderView">
-                                <rect key="frame" x="37" y="63" width="247" height="49"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t9Z-F0-QLE" customClass="CCMBorderView">
+                                <rect key="frame" x="37" y="65" width="247" height="50"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nB0-E8-tIt">
+                                        <rect key="frame" x="24" y="0.0" width="199" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg2-3g-fy4">
                                         <rect key="frame" x="24" y="0.0" width="199" height="49"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Choose a Place">
+                                        <state key="normal" title="Choose a Place..">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -285,25 +300,32 @@
                                             <segue destination="diC-pw-pBM" kind="modal" identifier="placeChoosing" id="JhS-9x-aJh"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nB0-E8-tIt">
-                                        <rect key="frame" x="24" y="0.0" width="199" height="49"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="highlightedColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Search-white-icon" translatesAutoresizingMaskIntoConstraints="NO" id="cqo-fs-3EE">
+                                        <rect key="frame" x="16" y="17" width="15" height="15"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.11372549019607843" green="0.28235294117647058" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="247" id="V7G-iy-fNo"/>
+                                    <constraint firstAttribute="width" secondItem="t9Z-F0-QLE" secondAttribute="height" multiplier="247:50" id="dfT-n5-7WR"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="28"/>
+                                        <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pV-al-sOf" customClass="CCMBorderView">
-                                <rect key="frame" x="55" y="505" width="229" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTh-GQ-Ul0">
+                                <rect key="frame" x="114" y="188" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pV-al-sOf" customClass="CCMBorderView">
+                                <rect key="frame" x="55" y="500" width="229" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohn-pD-eRl">
-                                        <rect key="frame" x="8" y="7" width="208" height="30"/>
+                                        <rect key="frame" x="8" y="0.0" width="208" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Start Racing">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -314,15 +336,38 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.30196078430000001" green="0.46666666670000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.27843137254901962" green="0.42745098039215684" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="Ygn-7B-Un3"/>
+                                    <constraint firstAttribute="width" secondItem="4pV-al-sOf" secondAttribute="height" multiplier="229:60" id="g4D-eS-NdD"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="23"/>
+                                        <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="VTh-GQ-Ul0" secondAttribute="centerY" constant="85.5" id="2Gs-st-9qu"/>
+                            <constraint firstAttribute="centerX" secondItem="4pV-al-sOf" secondAttribute="centerX" constant="-9.5" id="2vD-Ne-GfN"/>
+                            <constraint firstItem="cos-t1-QmX" firstAttribute="centerX" secondItem="t9Z-F0-QLE" secondAttribute="centerX" constant="-0.5" id="72X-Kg-Uo1"/>
+                            <constraint firstItem="cos-t1-QmX" firstAttribute="height" secondItem="aKV-3h-RHB" secondAttribute="height" id="AEc-Rg-ZOl"/>
+                            <constraint firstItem="cos-t1-QmX" firstAttribute="leading" secondItem="evm-wV-hPq" secondAttribute="leadingMargin" constant="-16" id="FN8-e0-92G"/>
+                            <constraint firstItem="VTh-GQ-Ul0" firstAttribute="top" secondItem="aKV-3h-RHB" secondAttribute="bottom" constant="8" id="TF9-Fa-yn3"/>
+                            <constraint firstItem="cos-t1-QmX" firstAttribute="width" secondItem="evm-wV-hPq" secondAttribute="width" id="X3C-zq-QbW"/>
+                            <constraint firstItem="4pV-al-sOf" firstAttribute="top" secondItem="d7A-aq-JBs" secondAttribute="bottom" constant="11" id="eEr-SD-EIS"/>
+                            <constraint firstItem="cos-t1-QmX" firstAttribute="width" secondItem="aKV-3h-RHB" secondAttribute="width" id="goU-Yu-Gqi"/>
+                            <constraint firstAttribute="width" secondItem="d7A-aq-JBs" secondAttribute="width" id="h12-3f-JUU"/>
+                            <constraint firstItem="cos-t1-QmX" firstAttribute="top" secondItem="mvu-9Y-dog" secondAttribute="bottom" constant="-20" id="j50-Ob-lGC"/>
+                            <constraint firstItem="cos-t1-QmX" firstAttribute="centerY" secondItem="t9Z-F0-QLE" secondAttribute="centerY" constant="2.5" id="j9v-pc-Tfp"/>
+                            <constraint firstItem="d7A-aq-JBs" firstAttribute="top" secondItem="VTh-GQ-Ul0" secondAttribute="bottom" constant="8" id="kwo-rj-Aiu"/>
+                            <constraint firstAttribute="centerX" secondItem="VTh-GQ-Ul0" secondAttribute="centerX" id="nWC-8E-aVM"/>
+                            <constraint firstItem="aKV-3h-RHB" firstAttribute="leading" secondItem="evm-wV-hPq" secondAttribute="leadingMargin" constant="-16" id="ola-jH-1tT"/>
+                            <constraint firstItem="Hk4-Ec-xDb" firstAttribute="top" secondItem="4pV-al-sOf" secondAttribute="bottom" constant="20" id="w3v-ur-xMQ"/>
+                            <constraint firstItem="aKV-3h-RHB" firstAttribute="top" secondItem="mvu-9Y-dog" secondAttribute="bottom" constant="-20" id="zOy-xn-ma0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Race" id="HLx-vp-hpM"/>
                     <connections>
@@ -331,11 +376,12 @@
                         <outlet property="startRacingWrapper" destination="4pV-al-sOf" id="ZlA-7V-YTc"/>
                         <outlet property="venueButton" destination="cg2-3g-fy4" id="CSY-Uo-A2E"/>
                         <outlet property="venueLabel" destination="nB0-E8-tIt" id="C54-pR-Zgi"/>
+                        <outlet property="venueWrapper" destination="t9Z-F0-QLE" id="BSd-DS-qH2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU1-UX-Yoo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592" y="-246"/>
+            <point key="canvasLocation" x="2592" y="-251"/>
         </scene>
         <!--Race View Controller-->
         <scene sceneID="dfV-FG-t7z">
@@ -403,8 +449,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Search-white-icon" width="14" height="14"/>
         <image name="bg-splash" width="320" height="568"/>
         <image name="logo" width="117" height="96"/>
+        <image name="map" width="320" height="180"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
